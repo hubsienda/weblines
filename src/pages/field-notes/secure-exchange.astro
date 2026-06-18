@@ -4,6 +4,7 @@ import Hero from '@components/Hero.astro';
 import ArticleCard from '@components/ArticleCard.astro';
 import CTASection from '@components/CTASection.astro';
 import { getCollection } from 'astro:content';
+import { getFieldNoteSlug } from '../../utils/fieldNotes';
 
 const notes = await getCollection('fieldNotes');
 const categoryNotes = notes
@@ -37,7 +38,7 @@ const categoryNotes = notes
                   description={note.data.description}
                   category={note.data.category}
                   date={note.data.date}
-                  href={`/field-notes/${note.data.slug}`}
+                  href={`/field-notes/${getFieldNoteSlug(note.id)}`}
                 />
               ))
             }
