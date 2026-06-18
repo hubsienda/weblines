@@ -1,0 +1,84 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import ToolCard from '@components/ToolCard.astro';
+import RouteCard from '@components/RouteCard.astro';
+import CTASection from '@components/CTASection.astro';
+---
+
+<Layout
+  title="AI & Automation"
+  description="Sienda Weblines helps businesses distinguish useful AI, ordinary automation, better data, clearer process, human review, and technology theatre."
+>
+  <Hero
+    eyebrow="AI & Automation"
+    title="AI is sometimes useful. Confusion is not."
+    description="Many business problems dressed as AI are actually poor data, weak process, unclear responsibility, missing structure, bad procurement, or ordinary automation wearing a borrowed costume."
+    primaryHref="https://tally.so/r/aQlYlb"
+    primaryLabel="Use AI Theatre Detector"
+    secondaryHref="https://tally.so/r/ZjQvZy"
+    secondaryLabel="Use Automation or AI?"
+  />
+
+  <section class="page-section">
+    <div class="container">
+      <SectionHeader
+        title="Useful systems do not begin with fashion"
+        description="The practical question is not whether AI is impressive. The question is whether it is the right tool for this problem, under these constraints, with this data, this responsibility, and this review process."
+      />
+
+      <div class="grid grid--3">
+        <RouteCard
+          title="AI realism"
+          description="AI may assist with classification, drafting, summarisation, comparison, interpretation, pattern recognition, and messy text. That does not mean it should act alone."
+          href="/field-notes/ai-automation"
+          buttonLabel="Read AI notes"
+        />
+
+        <RouteCard
+          title="Automation discipline"
+          description="Automation is useful when the process is already understood. Automating confusion merely allows the confusion to travel faster."
+          href="/tools"
+          buttonLabel="Use tools"
+        />
+
+        <RouteCard
+          title="Human judgement"
+          description="Some work involves responsibility, risk, ethics, professional judgement, or final accountability. The machine can prepare. It must not be promoted to adult supervision."
+          href="/request-review"
+          buttonLabel="Request review"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section page-section--soft">
+    <div class="container">
+      <SectionHeader
+        title="Use the diagnostic before the theatre begins"
+        description="Before buying a platform, accepting a proposal, approving a project, or declaring a strategic transformation because a slide deck said so, test the problem."
+      />
+
+      <div class="grid grid--2">
+        <ToolCard
+          title="AI Theatre Detector"
+          description="Tests whether an AI proposal, platform, consultant, project, or internal idea is commercially useful or decorative fog."
+          route="Sienda Media, review, or AI & Automation Field Notes."
+          href="https://tally.so/r/aQlYlb"
+          buttonLabel="Use AI Theatre Detector"
+        />
+
+        <ToolCard
+          title="Automation or AI?"
+          description="Tests whether the issue needs AI, automation, better data, a clearer process, a database, a form, a spreadsheet, or human review."
+          route="Business engineering or practical review."
+          href="https://tally.so/r/ZjQvZy"
+          buttonLabel="Use Decision Tool"
+        />
+      </div>
+
+      <CTASection type="sienda-media" />
+    </div>
+  </section>
+</Layout>
