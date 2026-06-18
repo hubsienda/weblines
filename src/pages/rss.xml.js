@@ -1,5 +1,6 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
+import { getFieldNoteSlug } from '../utils/fieldNotes';
 
 export async function GET(context) {
   const notes = await getCollection('fieldNotes');
@@ -14,7 +15,7 @@ export async function GET(context) {
         title: note.data.title,
         description: note.data.description,
         pubDate: note.data.date,
-        link: `/field-notes/${note.data.slug}`
+        link: `/field-notes/${getFieldNoteSlug(note.id)}`
       }))
   });
 }
