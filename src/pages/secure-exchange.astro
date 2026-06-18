@@ -1,0 +1,86 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import ToolCard from '@components/ToolCard.astro';
+import RouteCard from '@components/RouteCard.astro';
+import CTASection from '@components/CTASection.astro';
+---
+
+<Layout
+  title="Secure Exchange"
+  description="When ordinary email and chat are the wrong place for temporary sensitive information, Sienda Weblines routes visitors towards diagnostics and Jambastic."
+>
+  <Hero
+    eyebrow="Secure Exchange"
+    title="Not every message deserves a permanent readable life."
+    description="Email and chat are useful. They are also searchable, forwardable, archivable, backed up, screenshotted, exported, and rediscovered later when everyone suddenly becomes very interested in what was said."
+    primaryHref="https://jambastic.com"
+    primaryLabel="Visit Jambastic"
+    secondaryHref="/tools"
+    secondaryLabel="Use a diagnostic tool"
+  />
+
+  <section class="page-section">
+    <div class="container">
+      <SectionHeader
+        title="When ordinary communication becomes the risk"
+        description="Sensitive information is often mishandled during normal daily work, not during a dramatic cyberattack. The problem is usually convenience pretending to be safety."
+      />
+
+      <div class="grid grid--3">
+        <RouteCard
+          title="Temporary sensitive information"
+          description="Passwords, private links, client identity details, settlement figures, access instructions, payroll details, signing information, confidential notes, and private instructions should not live forever in ordinary channels."
+          href="https://jambastic.com"
+          buttonLabel="Visit Jambastic"
+        />
+
+        <RouteCard
+          title="Professional responsibility"
+          description="For law firms, accountants, advisers, consultants, private offices, and agencies, sensitive information is not abstract data. It is trust, liability, reputation, and operational exposure."
+          href="/request-review"
+          buttonLabel="Request review"
+        />
+
+        <RouteCard
+          title="Communication discipline"
+          description="The practical question is not whether email and chat are useful. They are. The question is whether they are appropriate for this specific exchange."
+          href="/field-notes/secure-exchange"
+          buttonLabel="Read Field Notes"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section page-section--soft">
+    <div class="container">
+      <SectionHeader
+        title="Start with the right diagnostic"
+        description="Use a simple test before sending information through ordinary email or chat."
+      />
+
+      <div class="grid grid--2">
+        <ToolCard
+          title="Email Risk Checker"
+          description="A fast check for deciding whether the information belongs in ordinary email."
+          bestFor="Sensitive information that may become a permanent readable record."
+          route="Jambastic."
+          href="https://tally.so/r/lb4dy5"
+          buttonLabel="Use Email Risk Checker"
+        />
+
+        <ToolCard
+          title="Confidential Communication Risk Checker"
+          description="A broader risk diagnostic for professional firms and high-trust environments."
+          bestFor="Client-related, confidential, access-related, or commercially sensitive communication."
+          route="Jambastic or practical review."
+          href="https://tally.so/r/RGr8DK"
+          buttonLabel="Use Risk Checker"
+        />
+      </div>
+
+      <CTASection type="jambastic" />
+    </div>
+  </section>
+</Layout>
