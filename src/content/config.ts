@@ -12,7 +12,6 @@ const fieldNotes = defineCollection({
       'Market Intelligence',
       'Business Engineering'
     ]),
-    slug: z.string(),
     featured: z.boolean().default(false),
     ctaType: z.enum([
       'jambastic',
