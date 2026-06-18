@@ -1,0 +1,89 @@
+---
+import Button from '@components/Button.astro';
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  primaryHref?: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  primaryHref,
+  primaryLabel,
+  secondaryHref,
+  secondaryLabel
+} = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero__inner container">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+
+    <div class="hero__content">
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </div>
+
+    {
+      (primaryHref || secondaryHref) && (
+        <div class="hero__actions">
+          {primaryHref && primaryLabel && (
+            <Button href={primaryHref}>{primaryLabel}</Button>
+          )}
+          {secondaryHref && secondaryLabel && (
+            <Button href={secondaryHref} variant="secondary">{secondaryLabel}</Button>
+          )}
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(4.5rem, 10vw, 8rem);
+    border-bottom: 1px solid var(--colour-line);
+    background:
+      radial-gradient(circle at top right, rgba(0, 153, 255, 0.08), transparent 34rem),
+      var(--colour-white);
+  }
+
+  .hero__inner {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .hero__content {
+    max-width: 920px;
+  }
+
+  .hero h1 {
+    margin: 0;
+    color: var(--colour-dark);
+    font-size: clamp(2.6rem, 8vw, 5.9rem);
+    line-height: 0.96;
+    letter-spacing: -0.075em;
+  }
+
+  .hero p:not(.eyebrow) {
+    max-width: 760px;
+    margin: 1.35rem 0 0;
+    color: var(--colour-muted);
+    font-size: clamp(1.12rem, 2.2vw, 1.38rem);
+    line-height: 1.55;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 0.75rem;
+  }
+</style>
