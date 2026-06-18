@@ -1,0 +1,97 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import ArticleCard from '@components/ArticleCard.astro';
+import RouteCard from '@components/RouteCard.astro';
+import { getCollection } from 'astro:content';
+
+const notes = await getCollection('fieldNotes');
+const sortedNotes = notes.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout
+  title="Field Notes"
+  description="Field Notes from Sienda Weblines on secure exchange, AI and automation, market intelligence, and business engineering."
+>
+  <Hero
+    eyebrow="Field Notes"
+    title="Clear notes for expensive decisions."
+    description="Practical writing on secure exchange, AI realism, automation, market intelligence, and business engineering. Not a blog. A field notebook for decisions that may cost money."
+    primaryHref="/tools"
+    primaryLabel="Use diagnostic tools"
+    secondaryHref="/request-review"
+    secondaryLabel="Request review"
+  />
+
+  <section class="page-section page-section--soft">
+    <div class="container">
+      <SectionHeader
+        title="Categories"
+        description="Choose the route closest to the problem."
+      />
+
+      <div class="grid grid--4">
+        <RouteCard
+          title="Secure Exchange"
+          description="Sensitive information, temporary exchange, email risk, chat persistence, and Jambastic."
+          href="/field-notes/secure-exchange"
+        />
+
+        <RouteCard
+          title="AI & Automation"
+          description="AI theatre, automation discipline, data, process, human judgement, and practical systems."
+          href="/field-notes/ai-automation"
+        />
+
+        <RouteCard
+          title="Market Intelligence"
+          description="Market analysis, QOOBIX, candidate organisations for verification, and commercial clarity."
+          href="/field-notes/market-intelligence"
+        />
+
+        <RouteCard
+          title="Business Engineering"
+          description="Diagnosis before building, smart capital, useful systems, and operational clarity."
+          href="/field-notes/business-engineering"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <SectionHeader
+        title="All Field Notes"
+        description="The latest notes appear first."
+      />
+
+      {
+        sortedNotes.length > 0 ? (
+          <div class="grid grid--3">
+            {
+              sortedNotes.map((note) => (
+                <ArticleCard
+                  title={note.data.title}
+                  description={note.data.description}
+                  category={note.data.category}
+                  date={note.data.date}
+                  href={`/field-notes/${note.data.slug}`}
+                />
+              ))
+            }
+          </div>
+        ) : (
+          <p class="empty-note">No Field Notes have been added yet.</p>
+        )
+      }
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .empty-note {
+    margin: 0;
+    color: var(--colour-muted);
+  }
+</style>
