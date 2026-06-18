@@ -1,0 +1,56 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import RouteCard from '@components/RouteCard.astro';
+import CTASection from '@components/CTASection.astro';
+---
+
+<Layout
+  title="Business Engineering"
+  description="Business engineering from Sienda Weblines means diagnosis before building, smart capital, operational clarity, useful systems, and commercial judgement."
+>
+  <Hero
+    eyebrow="Business Engineering"
+    title="Diagnosis before building."
+    description="The expensive mistake is not always choosing the wrong technology. Sometimes it is building beautifully around a badly understood problem."
+    primaryHref="/request-review"
+    primaryLabel="Request a practical review"
+    secondaryHref="/tools"
+    secondaryLabel="Use diagnostic tools"
+  />
+
+  <section class="page-section">
+    <div class="container">
+      <SectionHeader
+        title="Useful systems begin with clear judgement"
+        description="Business engineering is the practical discipline of understanding the commercial problem, the process, the data, the people, the risks, and the decision before choosing the mechanism."
+      />
+
+      <div class="grid grid--3">
+        <RouteCard
+          title="Commercial clarity"
+          description="A system should support a real commercial action. If nobody can say what better decision it enables, the project is already rehearsing its apology."
+          href="/request-review"
+          buttonLabel="Request review"
+        />
+
+        <RouteCard
+          title="Operational discipline"
+          description="Bad processes do not become good because a dashboard watches them. First clarify the work. Then decide whether technology should assist."
+          href="/tools"
+          buttonLabel="Use tools"
+        />
+
+        <RouteCard
+          title="Smart capital"
+          description="Spend money where it clarifies, protects, analyses, routes, simplifies, or improves judgement. Do not pay for ceremonial complexity."
+          href="https://sienda.co.uk"
+          buttonLabel="Visit Sienda Ltd"
+        />
+      </div>
+
+      <CTASection type="review" />
+    </div>
+  </section>
+</Layout>
