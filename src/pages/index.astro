@@ -1,0 +1,163 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import ToolCard from '@components/ToolCard.astro';
+import RouteCard from '@components/RouteCard.astro';
+import ArticleCard from '@components/ArticleCard.astro';
+import CTASection from '@components/CTASection.astro';
+import { getCollection } from 'astro:content';
+
+const notes = await getCollection('fieldNotes');
+const featuredNotes = notes
+  .filter((note) => note.data.featured)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<Layout
+  title="Sienda Weblines"
+  description="Practical diagnostics and field notes for better business decisions, secure information exchange, market intelligence, AI realism, automation, and business engineering."
+>
+  <Hero
+    eyebrow="Sienda Weblines"
+    title="Practical diagnostics for better business decisions."
+    description="Test whether your business problem needs secure exchange, AI, automation, better data, market intelligence, or a clearer process before money is spent badly."
+    primaryHref="/tools"
+    primaryLabel="Use a diagnostic tool"
+    secondaryHref="/request-review"
+    secondaryLabel="Request a practical review"
+  />
+
+  <section class="page-section">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Diagnostics"
+        title="Start with the problem, not the invoice."
+        description="The tools are designed to help businesses identify the real issue before choosing a system, supplier, consultant, platform, or process."
+      />
+
+      <div class="grid grid--4">
+        <ToolCard
+          title="Should this be sent by email?"
+          description="For sensitive information, access details, client data, private instructions, and anything that should not become a permanent readable record."
+          bestFor="Quick communication-risk checks."
+          route="Email Risk Checker, then Jambastic where appropriate."
+          href="https://tally.so/r/lb4dy5"
+          buttonLabel="Use Email Risk Checker"
+        />
+
+        <ToolCard
+          title="Confidential Communication Risk Checker"
+          description="For professional firms, advisers, consultants, agencies, and high-trust environments handling sensitive exchanges."
+          bestFor="Sensitive temporary exchanges."
+          route="Confidential checker, then Jambastic or review."
+          href="https://tally.so/r/RGr8DK"
+          buttonLabel="Use Risk Checker"
+        />
+
+        <ToolCard
+          title="AI Theatre Detector"
+          description="For proposals, platforms, consultants, internal projects, and “AI solutions” that may be more costume than substance."
+          bestFor="AI claims before money is spent."
+          route="Detector, guide, or practical review."
+          href="https://tally.so/r/aQlYlb"
+          buttonLabel="Use Detector"
+        />
+
+        <ToolCard
+          title="Automation or AI?"
+          description="For businesses unsure whether they need AI, automation, better data, clearer processes, a database, a form, or human review."
+          bestFor="Technology decisions before procurement."
+          route="Diagnostic, review, or business engineering."
+          href="https://tally.so/r/ZjQvZy"
+          buttonLabel="Use Decision Tool"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section page-section--soft">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Routes"
+        title="Where the tools lead"
+        description="The diagnostic tools are not decorative forms. They route the visitor towards the correct commercial action."
+      />
+
+      <div class="grid grid--4">
+        <RouteCard
+          title="Secure temporary exchange"
+          description="For sensitive information that should be shared, used, and then stop being a permanent readable record."
+          href="/secure-exchange"
+          buttonLabel="Go to secure exchange"
+        />
+
+        <RouteCard
+          title="Market intelligence"
+          description="For organisations that need clearer market analysis, candidate discovery for verification, and practical commercial direction."
+          href="/market-intelligence"
+          buttonLabel="Go to market intelligence"
+        />
+
+        <RouteCard
+          title="Guides and field tools"
+          description="For paid guides, diagnostic material, templates, ebooks, and practical downloadable resources."
+          href="/guides"
+          buttonLabel="Go to guides"
+        />
+
+        <RouteCard
+          title="Company doctrine"
+          description="For the institutional Sienda view: diagnosis before building, useful systems, commercial clarity, and no technology theatre."
+          href="https://sienda.co.uk"
+          buttonLabel="Visit Sienda Ltd"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Field Notes"
+        title="Clear thinking for expensive decisions."
+        description="Practical notes on secure exchange, AI realism, automation, market intelligence, and business engineering."
+      />
+
+      {
+        featuredNotes.length > 0 ? (
+          <div class="grid grid--3">
+            {
+              featuredNotes.map((note) => (
+                <ArticleCard
+                  title={note.data.title}
+                  description={note.data.description}
+                  category={note.data.category}
+                  date={note.data.date}
+                  href={`/field-notes/${note.data.slug}`}
+                />
+              ))
+            }
+          </div>
+        ) : (
+          <p class="empty-note">Field Notes will appear here once the first Markdown files are added.</p>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="page-section page-section--soft">
+    <div class="container">
+      <CTASection type="review" />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .empty-note {
+    max-width: 680px;
+    margin: 0;
+    color: var(--colour-muted);
+  }
+</style>
