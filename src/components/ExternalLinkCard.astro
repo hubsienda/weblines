@@ -1,0 +1,43 @@
+---
+import Button from '@components/Button.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  buttonLabel?: string;
+}
+
+const {
+  title,
+  description,
+  href,
+  buttonLabel = 'Visit'
+} = Astro.props;
+---
+
+<article class="external-link-card card">
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <Button href={href} variant="secondary" external>{buttonLabel}</Button>
+</article>
+
+<style>
+  .external-link-card {
+    display: grid;
+    gap: 0.9rem;
+    padding: 1.35rem;
+  }
+
+  .external-link-card h3 {
+    margin: 0;
+    color: var(--colour-dark);
+    font-size: 1.25rem;
+    letter-spacing: -0.03em;
+  }
+
+  .external-link-card p {
+    margin: 0;
+    color: var(--colour-muted);
+  }
+</style>
