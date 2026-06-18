@@ -1,0 +1,82 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  external?: boolean;
+}
+
+const {
+  href,
+  variant = 'primary',
+  external = href.startsWith('http')
+} = Astro.props;
+---
+
+<a
+  class:list={['button', `button--${variant}`]}
+  href={href}
+  rel={external ? 'noopener noreferrer' : undefined}
+>
+  <slot />
+</a>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: 46px;
+    padding: 0.72rem 1.05rem;
+    border-radius: 999px;
+    font-weight: 800;
+    line-height: 1;
+    text-decoration: none;
+    transition:
+      transform 160ms ease,
+      border-color 160ms ease,
+      background-color 160ms ease,
+      color 160ms ease;
+  }
+
+  .button:hover {
+    transform: translateY(-1px);
+  }
+
+  .button--primary {
+    border: 1px solid var(--colour-blue);
+    background: var(--colour-blue);
+    color: var(--colour-white);
+  }
+
+  .button--primary:hover {
+    color: var(--colour-white);
+    background: #0088e6;
+    border-color: #0088e6;
+  }
+
+  .button--secondary {
+    border: 1px solid var(--colour-line);
+    background: var(--colour-white);
+    color: var(--colour-dark);
+  }
+
+  .button--secondary:hover {
+    border-color: var(--colour-blue);
+    color: var(--colour-blue);
+  }
+
+  .button--ghost {
+    min-height: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    color: var(--colour-blue);
+    background: transparent;
+  }
+
+  .button--ghost:hover {
+    transform: none;
+    color: var(--colour-dark);
+  }
+</style>
