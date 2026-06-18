@@ -1,0 +1,89 @@
+---
+import CategoryPill from '@components/CategoryPill.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  date: Date;
+  href: string;
+}
+
+const {
+  title,
+  description,
+  category,
+  date,
+  href
+} = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('en-GB', {
+  day: '2-digit',
+  month: 'short',
+  year: 'numeric'
+}).format(date);
+---
+
+<article class="article-card card">
+  <div class="article-card__meta">
+    <CategoryPill label={category} />
+    <time datetime={date.toISOString()}>{formattedDate}</time>
+  </div>
+
+  <h3>
+    <a href={href}>{title}</a>
+  </h3>
+
+  <p>{description}</p>
+</article>
+
+<style>
+  .article-card {
+    display: grid;
+    gap: 0.85rem;
+    padding: 1.35rem;
+  }
+
+  .article-card__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .article-card time {
+    color: var(--colour-muted);
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+
+  .article-card h3 {
+    margin: 0;
+    font-size: 1.28rem;
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+  }
+
+  .article-card h3 a {
+    text-decoration: none;
+  }
+
+  .article-card h3 a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .article-card {
+    position: relative;
+  }
+
+  .article-card p {
+    margin: 0;
+    color: var(--colour-muted);
+  }
+
+  .article-card:hover {
+    border-color: rgba(0, 153, 255, 0.45);
+  }
+</style>
