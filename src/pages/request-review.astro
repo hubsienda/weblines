@@ -1,0 +1,73 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import Button from '@components/Button.astro';
+---
+
+<Layout
+  title="Request a Practical Review"
+  description="Request a practical review from Sienda Weblines when the issue involves sensitive information, operational confusion, market uncertainty, AI claims, automation decisions, or expensive technology choices."
+>
+  <Hero
+    eyebrow="Request Review"
+    title="Request a practical review."
+    description="Use this when the issue involves sensitive information, operational confusion, market uncertainty, AI claims, automation decisions, or expensive technology choices."
+    primaryHref="mailto:hub@siendaweblines.com"
+    primaryLabel="Email hub@siendaweblines.com"
+    secondaryHref="/tools"
+    secondaryLabel="Use a diagnostic first"
+  />
+
+  <section class="page-section">
+    <div class="container">
+      <SectionHeader
+        title="When to request a review"
+        description="A practical review is useful when the situation is too important for guesswork but not yet clear enough for a build, purchase, campaign, automation, AI project, or vendor conversation."
+      />
+
+      <div class="review-box card">
+        <div>
+          <h2>Contact Sienda Weblines</h2>
+          <p>
+            Send a short note describing the problem, the decision you are considering,
+            and what has already been tried. Do not send passwords, access credentials,
+            private client data, or confidential material by ordinary email.
+          </p>
+        </div>
+
+        <Button href="mailto:hub@siendaweblines.com">Email hub@siendaweblines.com</Button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .review-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: clamp(1.5rem, 4vw, 2.25rem);
+  }
+
+  .review-box h2 {
+    margin: 0;
+    color: var(--colour-dark);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.045em;
+  }
+
+  .review-box p {
+    max-width: 720px;
+    margin: 0.8rem 0 0;
+    color: var(--colour-muted);
+  }
+
+  @media (max-width: 720px) {
+    .review-box {
+      display: grid;
+    }
+  }
+</style>
