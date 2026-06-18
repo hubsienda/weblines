@@ -1,0 +1,60 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import ArticleCard from '@components/ArticleCard.astro';
+import CTASection from '@components/CTASection.astro';
+import { getCollection } from 'astro:content';
+
+const notes = await getCollection('fieldNotes');
+const categoryNotes = notes
+  .filter((note) => note.data.category === 'Market Intelligence')
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout
+  title="Market Intelligence Field Notes"
+  description="Field Notes on market intelligence, QOOBIX, opportunity detection, business analysis, and candidate organisations for verification."
+>
+  <Hero
+    eyebrow="Field Notes"
+    title="Market Intelligence"
+    description="Notes on practical analysis, market signals, candidate organisations for verification, commercial direction, and QOOBIX."
+    primaryHref="/market-intelligence"
+    primaryLabel="View market intelligence route"
+    secondaryHref="https://qoobix.com"
+    secondaryLabel="Visit QOOBIX"
+  />
+
+  <section class="page-section">
+    <div class="container">
+      {
+        categoryNotes.length > 0 ? (
+          <div class="grid grid--3">
+            {
+              categoryNotes.map((note) => (
+                <ArticleCard
+                  title={note.data.title}
+                  description={note.data.description}
+                  category={note.data.category}
+                  date={note.data.date}
+                  href={`/field-notes/${note.data.slug}`}
+                />
+              ))
+            }
+          </div>
+        ) : (
+          <p class="empty-note">No Market Intelligence Field Notes have been added yet.</p>
+        )
+      }
+
+      <CTASection type="qoobix" />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .empty-note {
+    margin: 0;
+    color: var(--colour-muted);
+  }
+</style>
