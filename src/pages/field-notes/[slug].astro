@@ -1,0 +1,132 @@
+---
+import Layout from '@layouts/Layout.astro';
+import CategoryPill from '@components/CategoryPill.astro';
+import CTASection from '@components/CTASection.astro';
+import ArticleCard from '@components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('fieldNotes');
+
+  return notes.map((note) => ({
+    params: { slug: note.data.slug },
+    props: { note }
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await note.render();
+
+const allNotes = await getCollection('fieldNotes');
+const relatedNotes = allNotes
+  .filter((item) => item.id !== note.id && item.data.category === note.data.category)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const formattedDate = new Intl.DateTimeFormat('en-GB', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric'
+}).format(note.data.date);
+---
+
+<Layout
+  title={note.data.title}
+  description={note.data.description}
+  canonical={`/field-notes/${note.data.slug}`}
+>
+  <article class="article-page">
+    <header class="article-hero">
+      <div class="reading-container">
+        <div class="article-hero__meta">
+          <CategoryPill label={note.data.category} />
+          <time datetime={note.data.date.toISOString()}>{formattedDate}</time>
+        </div>
+
+        <h1>{note.data.title}</h1>
+        <p>{note.data.description}</p>
+      </div>
+    </header>
+
+    <div class="reading-container prose article-content">
+      <Content />
+
+      <CTASection type={note.data.ctaType} />
+    </div>
+  </article>
+
+  {
+    relatedNotes.length > 0 && (
+      <section class="page-section page-section--soft">
+        <div class="container">
+          <h2 class="related-title">Related Field Notes</h2>
+
+          <div class="grid grid--3">
+            {
+              relatedNotes.map((item) => (
+                <ArticleCard
+                  title={item.data.title}
+                  description={item.data.description}
+                  category={item.data.category}
+                  date={item.data.date}
+                  href={`/field-notes/${item.data.slug}`}
+                />
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    )
+  }
+</Layout>
+
+<style>
+  .article-hero {
+    padding-block: clamp(4rem, 9vw, 7rem);
+    border-bottom: 1px solid var(--colour-line);
+    background:
+      radial-gradient(circle at top right, rgba(0, 153, 255, 0.08), transparent 32rem),
+      var(--colour-white);
+  }
+
+  .article-hero__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-hero time {
+    color: var(--colour-muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .article-hero h1 {
+    margin: 0;
+    color: var(--colour-dark);
+    font-size: clamp(2.4rem, 6vw, 4.7rem);
+    line-height: 0.98;
+    letter-spacing: -0.07em;
+  }
+
+  .article-hero p {
+    margin: 1.25rem 0 0;
+    color: var(--colour-muted);
+    font-size: clamp(1.08rem, 2vw, 1.28rem);
+    line-height: 1.55;
+  }
+
+  .article-content {
+    padding-block: 4rem;
+  }
+
+  .related-title {
+    margin: 0 0 1.5rem;
+    color: var(--colour-dark);
+    font-size: clamp(1.75rem, 4vw, 2.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.045em;
+  }
+</style>
