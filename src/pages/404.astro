@@ -1,0 +1,20 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+---
+
+<Layout
+  title="Page not found"
+  description="The requested page could not be found on Sienda Weblines."
+  noindex={true}
+>
+  <Hero
+    eyebrow="404"
+    title="This page has gone missing."
+    description="Possibly archived, renamed, removed, or promoted to a committee where nothing useful happens."
+    primaryHref="/"
+    primaryLabel="Return home"
+    secondaryHref="/tools"
+    secondaryLabel="Use diagnostic tools"
+  />
+</Layout>
