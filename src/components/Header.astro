@@ -1,0 +1,189 @@
+---
+const navItems = [
+  { href: '/tools', label: 'Tools' },
+  { href: '/field-notes', label: 'Field Notes' },
+  { href: '/secure-exchange', label: 'Secure Exchange' },
+  { href: '/ai-automation', label: 'AI & Automation' },
+  { href: '/market-intelligence', label: 'Market Intelligence' },
+  { href: '/guides', label: 'Guides' },
+  { href: '/request-review', label: 'Request Review' }
+];
+---
+
+<header class="site-header">
+  <div class="site-header__inner container">
+    <a class="site-header__brand" href="/" aria-label="Sienda Weblines home">
+      <img src="/logo.png" alt="Sienda Weblines" width="156" height="42" />
+    </a>
+
+    <nav class="site-header__nav" aria-label="Primary navigation">
+      {
+        navItems.map((item) => (
+          <a href={item.href}>{item.label}</a>
+        ))
+      }
+    </nav>
+
+    <a class="site-header__sienda" href="https://sienda.co.uk" rel="noopener noreferrer">
+      Sienda Ltd
+    </a>
+
+    <details class="mobile-nav">
+      <summary aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </summary>
+
+      <nav class="mobile-nav__panel" aria-label="Mobile navigation">
+        {
+          navItems.map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))
+        }
+        <a href="https://sienda.co.uk" rel="noopener noreferrer">Sienda Ltd</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid rgba(220, 230, 239, 0.8);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(18px);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: 1.15rem;
+    min-height: 76px;
+  }
+
+  .site-header__brand {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+
+  .site-header__brand img {
+    display: block;
+    max-height: 42px;
+    width: auto;
+  }
+
+  .site-header__nav {
+    display: flex;
+    align-items: center;
+    gap: 0.95rem;
+    margin-left: auto;
+    font-size: 0.92rem;
+    font-weight: 650;
+  }
+
+  .site-header__nav a,
+  .site-header__sienda,
+  .mobile-nav__panel a {
+    text-decoration: none;
+  }
+
+  .site-header__nav a {
+    color: var(--colour-dark);
+  }
+
+  .site-header__nav a:hover {
+    color: var(--colour-blue);
+  }
+
+  .site-header__sienda {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.48rem 0.75rem;
+    border: 1px solid var(--colour-line);
+    border-radius: 999px;
+    color: var(--colour-muted);
+    font-size: 0.86rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .site-header__sienda:hover {
+    border-color: var(--colour-blue);
+    color: var(--colour-blue);
+  }
+
+  .mobile-nav {
+    display: none;
+    margin-left: auto;
+    position: relative;
+  }
+
+  .mobile-nav summary {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid var(--colour-line);
+    border-radius: 999px;
+    list-style: none;
+    background: var(--colour-white);
+  }
+
+  .mobile-nav summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-nav summary span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    margin-inline: auto;
+    background: var(--colour-dark);
+    border-radius: 999px;
+  }
+
+  .mobile-nav__panel {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    right: 0;
+    display: grid;
+    gap: 0.35rem;
+    width: min(82vw, 310px);
+    padding: 0.75rem;
+    border: 1px solid var(--colour-line);
+    border-radius: var(--radius-medium);
+    background: var(--colour-white);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .mobile-nav__panel a {
+    padding: 0.8rem 0.9rem;
+    border-radius: var(--radius-small);
+    color: var(--colour-dark);
+    font-weight: 700;
+  }
+
+  .mobile-nav__panel a:hover {
+    background: var(--colour-soft);
+    color: var(--colour-blue);
+  }
+
+  @media (max-width: 1060px) {
+    .site-header__nav,
+    .site-header__sienda {
+      display: none;
+    }
+
+    .mobile-nav {
+      display: block;
+    }
+  }
+</style>
