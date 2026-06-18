@@ -5,6 +5,7 @@ import SectionHeader from '@components/SectionHeader.astro';
 import ArticleCard from '@components/ArticleCard.astro';
 import RouteCard from '@components/RouteCard.astro';
 import { getCollection } from 'astro:content';
+import { getFieldNoteSlug } from '../../utils/fieldNotes';
 
 const notes = await getCollection('fieldNotes');
 const sortedNotes = notes.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -76,7 +77,7 @@ const sortedNotes = notes.sort((a, b) => b.data.date.valueOf() - a.data.date.val
                   description={note.data.description}
                   category={note.data.category}
                   date={note.data.date}
-                  href={`/field-notes/${note.data.slug}`}
+                  href={`/field-notes/${getFieldNoteSlug(note.id)}`}
                 />
               ))
             }
