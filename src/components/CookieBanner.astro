@@ -6,8 +6,9 @@
     </p>
 
     <div class="cookie-banner__actions">
-      <a href="https://sienda.co.uk/legal/" rel="noopener noreferrer">Legal information</a>
-      <button type="button" data-cookie-accept>Accept</button>
+      <a href="https://sienda.co.uk/legal/">Legal information</a>
+      <button type="button" class="cookie-banner__button cookie-banner__button--secondary" data-cookie-deny>Deny</button>
+      <button type="button" class="cookie-banner__button cookie-banner__button--primary" data-cookie-accept>Accept</button>
     </div>
   </div>
 </div>
@@ -15,14 +16,20 @@
 <script>
   const banner = document.querySelector('[data-cookie-banner]');
   const acceptButton = document.querySelector('[data-cookie-accept]');
-  const storageKey = 'sienda-weblines-cookie-notice-accepted';
+  const denyButton = document.querySelector('[data-cookie-deny]');
+  const storageKey = 'sienda-weblines-cookie-notice-choice';
 
-  if (banner && localStorage.getItem(storageKey) !== 'yes') {
+  if (banner && !localStorage.getItem(storageKey)) {
     banner.removeAttribute('hidden');
   }
 
   acceptButton?.addEventListener('click', () => {
-    localStorage.setItem(storageKey, 'yes');
+    localStorage.setItem(storageKey, 'accepted');
+    banner?.setAttribute('hidden', '');
+  });
+
+  denyButton?.addEventListener('click', () => {
+    localStorage.setItem(storageKey, 'denied');
     banner?.setAttribute('hidden', '');
   });
 </script>
@@ -75,19 +82,33 @@
     color: var(--colour-blue);
   }
 
-  .cookie-banner button {
+  .cookie-banner__button {
     min-height: 40px;
     padding: 0.6rem 0.9rem;
-    border: 1px solid var(--colour-blue);
     border-radius: var(--radius-button);
-    background: var(--colour-blue);
-    color: var(--colour-white);
     font-weight: 800;
   }
 
-  .cookie-banner button:hover {
+  .cookie-banner__button--primary {
+    border: 1px solid var(--colour-blue);
+    background: var(--colour-blue);
+    color: var(--colour-white);
+  }
+
+  .cookie-banner__button--primary:hover {
     background: #0088e6;
     border-color: #0088e6;
+  }
+
+  .cookie-banner__button--secondary {
+    border: 1px solid var(--colour-line);
+    background: var(--colour-white);
+    color: var(--colour-dark);
+  }
+
+  .cookie-banner__button--secondary:hover {
+    border-color: var(--colour-blue);
+    color: var(--colour-blue);
   }
 
   @media (max-width: 640px) {
