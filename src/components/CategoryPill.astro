@@ -1,0 +1,25 @@
+---
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<span class="category-pill">{label}</span>
+
+<style>
+  .category-pill {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 0.28rem 0.58rem;
+    border: 1px solid rgba(0, 153, 255, 0.24);
+    border-radius: 999px;
+    background: var(--colour-blue-soft);
+    color: #006fb8;
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+</style>
