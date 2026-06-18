@@ -1,0 +1,56 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import RouteCard from '@components/RouteCard.astro';
+import CTASection from '@components/CTASection.astro';
+---
+
+<Layout
+  title="Market Intelligence"
+  description="Market intelligence from Sienda Weblines supports QOOBIX: structured analysis, opportunity detection, and candidate organisations for verification."
+>
+  <Hero
+    eyebrow="Market Intelligence"
+    title="Market intelligence is not a list of names."
+    description="A list can be useful. It is not strategy. It is not verification. It is not analysis. It is not a magical lead machine with a bow tie. Market intelligence must clarify where opportunity may exist and what deserves human verification."
+    primaryHref="https://qoobix.com"
+    primaryLabel="Visit QOOBIX"
+    secondaryHref="/request-review"
+    secondaryLabel="Request a practical review"
+  />
+
+  <section class="page-section">
+    <div class="container">
+      <SectionHeader
+        title="From noise to commercial direction"
+        description="QOOBIX supports structured business intelligence. It analyses markets, detects possible opportunity, and produces practical outputs for action, not dashboard theatre."
+      />
+
+      <div class="grid grid--3">
+        <RouteCard
+          title="Strategic analysis"
+          description="Clarify sectors, customer types, market signals, positioning, channels, opportunities, and weaknesses before spending commercial effort badly."
+          href="https://qoobix.com"
+          buttonLabel="Visit QOOBIX"
+        />
+
+        <RouteCard
+          title="Discovery with verification"
+          description="Candidate organisations must be treated as candidates for verification, not guaranteed leads, confirmed partners, or qualified prospects."
+          href="/request-review"
+          buttonLabel="Request review"
+        />
+
+        <RouteCard
+          title="Practical exports"
+          description="The value is not permanent dashboard admiration. The value is intelligence that can be downloaded, reviewed, edited, discussed, and used."
+          href="/field-notes/market-intelligence"
+          buttonLabel="Read Field Notes"
+        />
+      </div>
+
+      <CTASection type="qoobix" />
+    </div>
+  </section>
+</Layout>
