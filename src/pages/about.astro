@@ -1,0 +1,60 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import ExternalLinkCard from '@components/ExternalLinkCard.astro';
+---
+
+<Layout
+  title="About"
+  description="Sienda Weblines is the practical diagnostic and content hub from Sienda Ltd."
+>
+  <Hero
+    eyebrow="About"
+    title="The practical diagnostic hub from Sienda Ltd."
+    description="Sienda Weblines helps businesses test problems before spending money on the wrong technology, process, tool, platform, or consultant."
+    primaryHref="/tools"
+    primaryLabel="Use diagnostic tools"
+    secondaryHref="/request-review"
+    secondaryLabel="Request review"
+  />
+
+  <section class="page-section">
+    <div class="container">
+      <SectionHeader
+        title="A route system for better decisions"
+        description="The site connects diagnostics, field notes, secure exchange, market intelligence, practical guides, and business engineering into one commercial route."
+      />
+
+      <div class="grid grid--4">
+        <ExternalLinkCard
+          title="Sienda Ltd"
+          description="The institutional company site."
+          href="https://sienda.co.uk"
+          buttonLabel="Visit Sienda"
+        />
+
+        <ExternalLinkCard
+          title="Jambastic"
+          description="Secure temporary exchange for sensitive information."
+          href="https://jambastic.com"
+          buttonLabel="Visit Jambastic"
+        />
+
+        <ExternalLinkCard
+          title="QOOBIX"
+          description="Market intelligence, analysis, and discovery for verification."
+          href="https://qoobix.com"
+          buttonLabel="Visit QOOBIX"
+        />
+
+        <ExternalLinkCard
+          title="Sienda Media"
+          description="Paid guides, field tools, templates, and downloadable resources."
+          href="https://siendamedia.com"
+          buttonLabel="Visit Sienda Media"
+        />
+      </div>
+    </div>
+  </section>
+</Layout>
