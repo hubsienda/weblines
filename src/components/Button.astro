@@ -15,6 +15,7 @@ const {
 <a
   class:list={['button', `button--${variant}`]}
   href={href}
+  target={external ? '_blank' : undefined}
   rel={external ? 'noopener noreferrer' : undefined}
 >
   <slot />
