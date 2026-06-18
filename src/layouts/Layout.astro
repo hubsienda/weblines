@@ -68,5 +68,37 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
 
     <Footer />
     <CookieBanner />
+
+    <script is:inline>
+      const currentHost = window.location.hostname;
+
+      document.querySelectorAll('a[href]').forEach((link) => {
+        const href = link.getAttribute('href');
+
+        if (!href) return;
+        if (href.startsWith('#')) return;
+        if (href.startsWith('/')) return;
+        if (href.startsWith('mailto:')) return;
+        if (href.startsWith('tel:')) return;
+
+        try {
+          const url = new URL(href, window.location.href);
+
+          if (url.hostname !== currentHost) {
+            link.setAttribute('target', '_blank');
+
+            const existingRel = link.getAttribute('rel') || '';
+            const relValues = new Set(existingRel.split(' ').filter(Boolean));
+
+            relValues.add('noopener');
+            relValues.add('noreferrer');
+
+            link.setAttribute('rel', Array.from(relValues).join(' '));
+          }
+        } catch {
+          return;
+        }
+      });
+    </script>
   </body>
 </html>
