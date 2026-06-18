@@ -1,0 +1,80 @@
+---
+import Button from '@components/Button.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  bestFor?: string;
+  checks?: string;
+  whenToUse?: string;
+  route?: string;
+  href: string;
+  buttonLabel?: string;
+}
+
+const {
+  title,
+  description,
+  bestFor,
+  checks,
+  whenToUse,
+  route,
+  href,
+  buttonLabel = 'Open tool'
+} = Astro.props;
+---
+
+<article class="tool-card card">
+  <div>
+    <h3>{title}</h3>
+    <p class="tool-card__description">{description}</p>
+  </div>
+
+  <div class="tool-card__details">
+    {checks && <p><strong>What it checks:</strong> {checks}</p>}
+    {bestFor && <p><strong>Best for:</strong> {bestFor}</p>}
+    {whenToUse && <p><strong>When to use it:</strong> {whenToUse}</p>}
+    {route && <p><strong>Commercial route:</strong> {route}</p>}
+  </div>
+
+  <Button href={href} external>{buttonLabel}</Button>
+</article>
+
+<style>
+  .tool-card {
+    display: grid;
+    align-content: space-between;
+    gap: 1.35rem;
+    padding: 1.35rem;
+  }
+
+  .tool-card h3 {
+    margin: 0;
+    color: var(--colour-dark);
+    font-size: 1.32rem;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+  }
+
+  .tool-card__description {
+    margin: 0.65rem 0 0;
+    color: var(--colour-muted);
+  }
+
+  .tool-card__details {
+    display: grid;
+    gap: 0.65rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--colour-line);
+  }
+
+  .tool-card__details p {
+    margin: 0;
+    color: var(--colour-muted);
+    font-size: 0.96rem;
+  }
+
+  .tool-card__details strong {
+    color: var(--colour-dark);
+  }
+</style>
