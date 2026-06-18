@@ -8,6 +8,10 @@ export default defineConfig({
     mdx(),
     sitemap()
   ],
+  redirects: {
+    '/legal': 'https://sienda.co.uk/legal/',
+    '/legal/': 'https://sienda.co.uk/legal/'
+  },
   markdown: {
     shikiConfig: {
       theme: 'github-light'
