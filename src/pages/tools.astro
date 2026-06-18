@@ -1,0 +1,83 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import ToolCard from '@components/ToolCard.astro';
+import CTASection from '@components/CTASection.astro';
+---
+
+<Layout
+  title="Tools"
+  description="Diagnostic tools from Sienda Weblines for secure exchange, confidential communication risk, AI theatre, automation, data, process, and business engineering decisions."
+>
+  <Hero
+    eyebrow="Tools"
+    title="Diagnostic tools before commercial decisions."
+    description="Use these tools to test the nature of the problem before choosing the wrong platform, supplier, process, consultant, or technical fashion accessory."
+    primaryHref="/request-review"
+    primaryLabel="Request a practical review"
+    secondaryHref="/field-notes"
+    secondaryLabel="Read Field Notes"
+  />
+
+  <section class="page-section">
+    <div class="container">
+      <SectionHeader
+        title="The diagnostic set"
+        description="Each tool is designed to clarify the problem and route the visitor towards the correct next step."
+      />
+
+      <div class="grid grid--2">
+        <ToolCard
+          title="Email Risk Checker"
+          description="A quick test for deciding whether ordinary email is appropriate for the information being shared."
+          checks="Whether the content involves sensitive, temporary, access-related, confidential, client-related, or professionally risky information."
+          bestFor="Professionals who need a fast answer before sending information through ordinary email."
+          whenToUse="Before sending passwords, access links, confidential notes, private instructions, client details, settlement figures, payroll instructions, or similar material."
+          route="Jambastic, when the information should not become a permanent readable record."
+          href="https://tally.so/r/lb4dy5"
+          buttonLabel="Open Email Risk Checker"
+        />
+
+        <ToolCard
+          title="Confidential Communication Risk Checker"
+          description="A broader diagnostic for professional environments where sensitive information may be mishandled during ordinary daily work."
+          checks="Whether the communication creates unnecessary exposure through email, chat, forwarding, searchable history, backups, archives, screenshots, or later discovery."
+          bestFor="Law firms, accountants, advisers, consultants, agencies, private offices, and other high-trust environments."
+          whenToUse="When the exchange involves responsibility, client trust, professional confidentiality, access data, identity details, commercial sensitivity, or operational risk."
+          route="Jambastic, or a practical review if the communication process itself needs redesigning."
+          href="https://tally.so/r/RGr8DK"
+          buttonLabel="Open Risk Checker"
+        />
+
+        <ToolCard
+          title="AI Theatre Detector"
+          description="A practical test for separating useful technology from expensive nonsense wearing an artificial moustache."
+          checks="Whether an AI proposal, product, internal project, consultant pitch, webinar, or platform is vague, inflated, unmeasurable, risky, or commercially weak."
+          bestFor="Business owners, managers, consultants, and teams evaluating AI claims."
+          whenToUse="Before buying, approving, presenting, recommending, or internally celebrating an AI initiative."
+          route="Sienda Media guides, AI & Automation Field Notes, or a focused practical review."
+          href="https://tally.so/r/aQlYlb"
+          buttonLabel="Open AI Theatre Detector"
+        />
+
+        <ToolCard
+          title="Automation or AI?"
+          description="A decision tool for businesses wondering whether the problem really needs AI, ordinary automation, better data, a clearer process, a database, a form, a spreadsheet, or human review."
+          checks="Whether the issue is primarily process, data, human judgement, database structure, automation, AI, or simple tooling."
+          bestFor="Teams facing confusing technology decisions."
+          whenToUse="Before building, buying, automating, connecting systems, asking for AI, or creating yet another spreadsheet with delusions of grandeur."
+          route="Business engineering, practical review, or the right product route."
+          href="https://tally.so/r/ZjQvZy"
+          buttonLabel="Open Decision Tool"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section page-section--soft">
+    <div class="container">
+      <CTASection type="review" />
+    </div>
+  </section>
+</Layout>
