@@ -1,0 +1,113 @@
+---
+const footerLinks = [
+  { href: '/tools', label: 'Tools' },
+  { href: '/field-notes', label: 'Field Notes' },
+  { href: '/secure-exchange', label: 'Secure Exchange' },
+  { href: '/ai-automation', label: 'AI & Automation' },
+  { href: '/market-intelligence', label: 'Market Intelligence' },
+  { href: '/guides', label: 'Guides' },
+  { href: '/request-review', label: 'Request Review' },
+  { href: 'https://sienda.co.uk', label: 'Sienda Ltd' },
+  { href: 'https://jambastic.com', label: 'Jambastic' },
+  { href: 'https://qoobix.com', label: 'QOOBIX' },
+  { href: 'https://siendamedia.com', label: 'Sienda Media' },
+  { href: '/legal', label: 'Legal' }
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner container">
+    <div class="site-footer__brand">
+      <img src="/logo.png" alt="Sienda Weblines" width="156" height="42" />
+      <p>
+        Practical diagnostics and field notes from Sienda for better business decisions,
+        secure information exchange, market intelligence, AI realism, automation, and
+        business engineering.
+      </p>
+    </div>
+
+    <nav class="site-footer__links" aria-label="Footer navigation">
+      {
+        footerLinks.map((link) => (
+          <a href={link.href} rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="site-footer__bottom">
+      <p>© {year} Sienda Ltd. All rights reserved.</p>
+      <p>Clear diagnosis before expensive theatre.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--colour-line);
+    background: var(--colour-dark);
+    color: var(--colour-white);
+  }
+
+  .site-footer__inner {
+    padding-block: 3rem 2rem;
+  }
+
+  .site-footer__brand {
+    max-width: 660px;
+  }
+
+  .site-footer__brand img {
+    display: block;
+    max-height: 42px;
+    width: auto;
+    margin-bottom: 1.25rem;
+    filter: brightness(0) invert(1);
+  }
+
+  .site-footer__brand p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.76);
+  }
+
+  .site-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem 1rem;
+    padding-block: 2.2rem;
+  }
+
+  .site-footer__links a {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.94rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .site-footer__links a:hover {
+    color: var(--colour-white);
+  }
+
+  .site-footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.9rem;
+  }
+
+  .site-footer__bottom p {
+    margin: 0;
+  }
+
+  @media (max-width: 680px) {
+    .site-footer__bottom {
+      display: grid;
+    }
+  }
+</style>
