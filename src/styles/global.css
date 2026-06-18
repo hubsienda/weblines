@@ -133,7 +133,7 @@ main {
   gap: 0.4rem;
   color: var(--colour-blue);
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -154,23 +154,23 @@ main {
 .prose h2,
 .prose h3 {
   color: var(--colour-dark);
-  line-height: 1.2;
-  letter-spacing: -0.035em;
+  line-height: 1.22;
+  letter-spacing: -0.03em;
 }
 
 .prose h1 {
-  font-size: clamp(2rem, 4.8vw, 3.5rem);
-  margin: 0 0 1.2rem;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  margin: 0 0 1.1rem;
 }
 
 .prose h2 {
-  font-size: clamp(1.55rem, 3.2vw, 2.15rem);
-  margin: 2.75rem 0 1rem;
+  font-size: clamp(1.38rem, 2.8vw, 1.75rem);
+  margin: 2.4rem 0 0.85rem;
 }
 
 .prose h3 {
-  font-size: clamp(1.18rem, 2.4vw, 1.4rem);
-  margin: 2rem 0 0.75rem;
+  font-size: clamp(1.08rem, 2vw, 1.25rem);
+  margin: 1.8rem 0 0.65rem;
 }
 
 .prose p {
