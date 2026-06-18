@@ -1,0 +1,95 @@
+---
+import Button from '@components/Button.astro';
+
+interface Props {
+  type: 'jambastic' | 'qoobix' | 'sienda-media' | 'review' | 'diagnostic';
+}
+
+const { type } = Astro.props;
+
+const ctas = {
+  jambastic: {
+    title: 'Need secure temporary exchange?',
+    text: 'Jambastic is designed for sensitive information that should be shared, used, and then stop being a permanent readable record.',
+    href: 'https://jambastic.com',
+    label: 'Visit Jambastic',
+    external: true
+  },
+  qoobix: {
+    title: 'Need clearer market intelligence?',
+    text: 'QOOBIX helps organisations analyse markets, detect opportunity, and produce structured intelligence for practical action.',
+    href: 'https://qoobix.com',
+    label: 'Visit QOOBIX',
+    external: true
+  },
+  'sienda-media': {
+    title: 'Need a practical guide?',
+    text: 'Sienda Media publishes paid guides, field tools, and downloadable material for clearer business decisions.',
+    href: 'https://siendamedia.com',
+    label: 'Visit Sienda Media',
+    external: true
+  },
+  review: {
+    title: 'Need a practical review?',
+    text: 'If the problem involves risk, process, data, AI, automation, sensitive information, or market uncertainty, start with a focused review.',
+    href: '/request-review',
+    label: 'Request a Practical Review',
+    external: false
+  },
+  diagnostic: {
+    title: 'Start with a diagnostic.',
+    text: 'Use a Sienda Weblines tool to test the problem before choosing the solution.',
+    href: '/tools',
+    label: 'Use a Diagnostic Tool',
+    external: false
+  }
+};
+
+const cta = ctas[type];
+---
+
+<section class="cta-section">
+  <div>
+    <h2>{cta.title}</h2>
+    <p>{cta.text}</p>
+  </div>
+
+  <Button href={cta.href} external={cta.external}>{cta.label}</Button>
+</section>
+
+<style>
+  .cta-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    padding: clamp(1.5rem, 4vw, 2.25rem);
+    border: 1px solid rgba(0, 153, 255, 0.24);
+    border-radius: var(--radius-large);
+    background:
+      radial-gradient(circle at top right, rgba(0, 153, 255, 0.12), transparent 22rem),
+      var(--colour-white);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .cta-section h2 {
+    margin: 0;
+    color: var(--colour-dark);
+    font-size: clamp(1.55rem, 3vw, 2.3rem);
+    line-height: 1.1;
+    letter-spacing: -0.045em;
+  }
+
+  .cta-section p {
+    max-width: 660px;
+    margin: 0.75rem 0 0;
+    color: var(--colour-muted);
+  }
+
+  @media (max-width: 720px) {
+    .cta-section {
+      display: grid;
+    }
+  }
+</style>
