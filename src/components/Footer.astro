@@ -7,7 +7,6 @@ const footerLinks = [
   { href: '/market-intelligence', label: 'Market Intelligence' },
   { href: '/guides', label: 'Guides' },
   { href: '/request-review', label: 'Request Review' },
-  { href: 'https://sienda.co.uk', label: 'Sienda Ltd' },
   { href: 'https://jambastic.com', label: 'Jambastic' },
   { href: 'https://qoobix.com', label: 'QOOBIX' },
   { href: 'https://siendamedia.com', label: 'Sienda Media' },
@@ -31,7 +30,7 @@ const year = new Date().getFullYear();
     <nav class="site-footer__links" aria-label="Footer navigation">
       {
         footerLinks.map((link) => (
-          <a href={link.href} rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+          <a href={link.href}>
             {link.label}
           </a>
         ))
@@ -39,7 +38,7 @@ const year = new Date().getFullYear();
     </nav>
 
     <div class="site-footer__bottom">
-      <p>© {year} Sienda Ltd. All rights reserved.</p>
+      <p>© {year} Sienda Ltd. All rights reserved | Company No. 08194971 • Registered in England & Wales</p>
       <p>Clear diagnosis before expensive theatre.</p>
     </div>
   </div>
@@ -105,7 +104,7 @@ const year = new Date().getFullYear();
     margin: 0;
   }
 
-  @media (max-width: 680px) {
+  @media (max-width: 840px) {
     .site-footer__bottom {
       display: grid;
     }
