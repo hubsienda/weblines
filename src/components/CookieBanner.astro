@@ -1,0 +1,104 @@
+<div class="cookie-banner" data-cookie-banner hidden>
+  <div class="cookie-banner__content">
+    <p>
+      Sienda Weblines uses essential cookies and may process technical data to operate this site.
+      Personal data is processed according to GDPR. Legal information is available from Sienda Ltd.
+    </p>
+
+    <div class="cookie-banner__actions">
+      <a href="https://sienda.co.uk/legal/" rel="noopener noreferrer">Legal information</a>
+      <button type="button" data-cookie-accept>Accept</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const banner = document.querySelector('[data-cookie-banner]');
+  const acceptButton = document.querySelector('[data-cookie-accept]');
+  const storageKey = 'sienda-weblines-cookie-notice-accepted';
+
+  if (banner && localStorage.getItem(storageKey) !== 'yes') {
+    banner.removeAttribute('hidden');
+  }
+
+  acceptButton?.addEventListener('click', () => {
+    localStorage.setItem(storageKey, 'yes');
+    banner?.setAttribute('hidden', '');
+  });
+</script>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    z-index: 100;
+    right: 1rem;
+    bottom: 1rem;
+    width: min(calc(100% - 2rem), 560px);
+    border: 1px solid var(--colour-line);
+    border-radius: var(--radius-medium);
+    background: var(--colour-white);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .cookie-banner[hidden] {
+    display: none;
+  }
+
+  .cookie-banner__content {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .cookie-banner p {
+    margin: 0;
+    color: var(--colour-muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .cookie-banner__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .cookie-banner__actions a {
+    color: var(--colour-dark);
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+
+  .cookie-banner__actions a:hover {
+    color: var(--colour-blue);
+  }
+
+  .cookie-banner button {
+    min-height: 40px;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid var(--colour-blue);
+    border-radius: var(--radius-button);
+    background: var(--colour-blue);
+    color: var(--colour-white);
+    font-weight: 800;
+  }
+
+  .cookie-banner button:hover {
+    background: #0088e6;
+    border-color: #0088e6;
+  }
+
+  @media (max-width: 640px) {
+    .cookie-banner {
+      right: 0.75rem;
+      bottom: 0.75rem;
+      width: calc(100% - 1.5rem);
+    }
+
+    .cookie-banner__actions {
+      justify-content: flex-start;
+    }
+  }
+</style>
