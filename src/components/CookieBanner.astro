@@ -1,3 +1,7 @@
+---
+import { SIENDA_LEGAL_URL } from '../config/links';
+---
+
 <div class="cookie-banner" data-cookie-banner hidden>
   <div class="cookie-banner__content">
     <p>
@@ -6,7 +10,7 @@
     </p>
 
     <div class="cookie-banner__actions">
-      <a href="https://sienda.co.uk/legal/">Legal information</a>
+      <a href={SIENDA_LEGAL_URL}>Legal information</a>
       <button type="button" class="cookie-banner__button cookie-banner__button--secondary" data-cookie-deny>Deny</button>
       <button type="button" class="cookie-banner__button cookie-banner__button--primary" data-cookie-accept>Accept</button>
     </div>
