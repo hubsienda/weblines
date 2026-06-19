@@ -1,9 +1,10 @@
 ---
 import Button from '@components/Button.astro';
 import ExternalFormButton from '@components/ExternalFormButton.astro';
+import { SIENDA_MEDIA_URL } from '../config/links';
 
 interface Props {
-  type: 'jambastic' | 'qoobix' | 'sienda-media' | 'review' | 'diagnostic';
+  type: 'jambastic' | 'qoobix' | 'sienda-media' | 'review' | 'diagnostic' | 'idaas';
 }
 
 type CTAConfig =
@@ -36,11 +37,18 @@ const ctas: Record<Props['type'], CTAConfig> = {
     label: 'Request a QOOBIX Review',
     request: true
   },
-  'sienda-media': {
-    title: 'Need practical guides or resources?',
-    text: 'Sienda Media publishes paid guides, field tools, and downloadable material for clearer business decisions.',
+  idaas: {
+    title: 'Need the intelligence, not the software?',
+    text: 'Use IDAAS when you want Sienda to deliver structured business intelligence without asking your team to learn, manage, or operate another platform.',
     label: 'Request IDAAS Information',
     request: true
+  },
+  'sienda-media': {
+    title: 'Need practical guides or resources?',
+    text: 'Sienda Media publishes paid guides, field tools, templates, ebooks, and downloadable material for clearer business decisions.',
+    label: 'Sienda Media',
+    href: SIENDA_MEDIA_URL,
+    request: false
   },
   review: {
     title: 'Need a practical review?',
