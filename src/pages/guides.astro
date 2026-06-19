@@ -4,6 +4,7 @@ import Hero from '@components/Hero.astro';
 import SectionHeader from '@components/SectionHeader.astro';
 import ExternalLinkCard from '@components/ExternalLinkCard.astro';
 import CTASection from '@components/CTASection.astro';
+import Button from '@components/Button.astro';
 import { SIENDA_MEDIA_URL } from '../config/links';
 ---
 
@@ -17,8 +18,8 @@ import { SIENDA_MEDIA_URL } from '../config/links';
     description="Sienda Media contains paid guides, ebooks, diagnostic material, field tools, templates, and downloadable resources for clearer decisions about AI, automation, secure exchange, market intelligence, and business engineering."
     primaryHref={SIENDA_MEDIA_URL}
     primaryLabel="Sienda Media"
-    secondaryHref="/request-review"
-    secondaryLabel="Request IDAAS Information"
+    secondaryHref="/field-notes"
+    secondaryLabel="Field Notes"
   />
 
   <section class="page-section">
@@ -51,7 +52,50 @@ import { SIENDA_MEDIA_URL } from '../config/links';
         />
       </div>
 
+      <div class="service-note card">
+        <div>
+          <h2>Need intelligence delivered as a service?</h2>
+          <p>
+            IDAAS is not a guide or downloadable product. It is Sienda’s managed
+            intelligence service for organisations that need structured analysis delivered directly.
+          </p>
+        </div>
+
+        <Button href="/idaas" variant="secondary">Explore IDAAS</Button>
+      </div>
+
       <CTASection type="sienda-media" />
     </div>
   </section>
 </Layout>
+
+<style>
+  .service-note {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+  }
+
+  .service-note h2 {
+    margin: 0;
+    color: var(--colour-dark);
+    font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+  }
+
+  .service-note p {
+    max-width: 720px;
+    margin: 0.75rem 0 0;
+    color: var(--colour-muted);
+  }
+
+  @media (max-width: 720px) {
+    .service-note {
+      display: grid;
+    }
+  }
+</style>
