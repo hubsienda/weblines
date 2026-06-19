@@ -4,6 +4,7 @@ import Hero from '@components/Hero.astro';
 import SectionHeader from '@components/SectionHeader.astro';
 import RouteCard from '@components/RouteCard.astro';
 import CTASection from '@components/CTASection.astro';
+import { QOOBIX_URL } from '../config/links';
 ---
 
 <Layout
@@ -14,10 +15,10 @@ import CTASection from '@components/CTASection.astro';
     eyebrow="Market Intelligence"
     title="Market intelligence is not a list of names."
     description="A list can be useful. It is not strategy. It is not verification. It is not analysis. It is not a magical lead machine with a bow tie. Market intelligence must clarify where opportunity may exist and what deserves human verification."
-    primaryHref="https://qoobix.com"
+    primaryHref={QOOBIX_URL}
     primaryLabel="QOOBIX"
     secondaryHref="/request-review"
-    secondaryLabel="Practical Review"
+    secondaryLabel="Request a QOOBIX Review"
   />
 
   <section class="page-section">
@@ -31,7 +32,7 @@ import CTASection from '@components/CTASection.astro';
         <RouteCard
           title="Strategic analysis"
           description="Clarify sectors, customer types, market signals, positioning, channels, opportunities, and weaknesses before spending commercial effort badly."
-          href="https://qoobix.com"
+          href={QOOBIX_URL}
           buttonLabel="QOOBIX"
         />
 
