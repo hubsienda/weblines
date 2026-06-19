@@ -94,7 +94,7 @@ const featuredNotes = notes
         description="The diagnostic tools are not decorative forms. They route the visitor towards the correct commercial action."
       />
 
-      <div class="grid grid--4">
+      <div class="route-grid">
         <RouteCard
           title="Secure temporary exchange"
           description="For sensitive information that should be shared, used, and then stop being a permanent readable record."
@@ -104,9 +104,16 @@ const featuredNotes = notes
 
         <RouteCard
           title="Market intelligence"
-          description="For organisations that need clearer market analysis, candidate discovery for verification, and practical commercial direction."
+          description="For organisations that need analysis, candidate discovery for verification, and practical commercial direction."
           href="/market-intelligence"
           buttonLabel="Market Intelligence"
+        />
+
+        <RouteCard
+          title="IDAAS"
+          description="Need market intelligence without operating QOOBIX? IDAAS is Sienda’s managed intelligence service for organisations that want the results delivered directly."
+          href="/idaas"
+          buttonLabel="Explore IDAAS"
         />
 
         <RouteCard
@@ -190,6 +197,12 @@ const featuredNotes = notes
     color: var(--colour-muted);
   }
 
+  .route-grid {
+    display: grid;
+    gap: var(--space-lg);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
   .applied-strip {
     display: flex;
     align-items: center;
@@ -222,7 +235,17 @@ const featuredNotes = notes
     flex: 0 0 auto;
   }
 
+  @media (max-width: 1080px) {
+    .route-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
   @media (max-width: 820px) {
+    .route-grid {
+      grid-template-columns: 1fr;
+    }
+
     .applied-strip {
       display: grid;
     }
