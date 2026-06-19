@@ -1,5 +1,6 @@
 ---
 import Button from '@components/Button.astro';
+import ExternalFormButton from '@components/ExternalFormButton.astro';
 
 interface Props {
   type: 'jambastic' | 'qoobix' | 'sienda-media' | 'review' | 'diagnostic';
@@ -11,37 +12,33 @@ const ctas = {
   jambastic: {
     title: 'Need secure temporary exchange?',
     text: 'Jambastic is designed for sensitive information that should be shared, used, and then stop being a permanent readable record.',
-    href: 'https://jambastic.com',
-    label: 'Jambastic',
-    external: true
+    label: 'Request a Jambastic Review',
+    request: true
   },
   qoobix: {
     title: 'Need clearer market intelligence?',
     text: 'QOOBIX helps organisations analyse markets, detect opportunity, and produce structured intelligence for practical action.',
-    href: 'https://qoobix.com',
-    label: 'QOOBIX',
-    external: true
+    label: 'Request a QOOBIX Review',
+    request: true
   },
   'sienda-media': {
-    title: 'Need a practical guide?',
+    title: 'Need practical guides or resources?',
     text: 'Sienda Media publishes paid guides, field tools, and downloadable material for clearer business decisions.',
-    href: 'https://siendamedia.com',
-    label: 'Sienda Media',
-    external: true
+    label: 'Request IDAAS Information',
+    request: true
   },
   review: {
     title: 'Need a practical review?',
     text: 'If the problem involves risk, process, data, AI, automation, sensitive information, or market uncertainty, start with a focused review.',
-    href: '/request-review',
-    label: 'Practical Review',
-    external: false
+    label: 'Request a Practical Review',
+    request: true
   },
   diagnostic: {
     title: 'Start with a diagnostic.',
     text: 'Use a Sienda Weblines tool to test the problem before choosing the solution.',
-    href: '/tools',
     label: 'Diagnostic Tools',
-    external: false
+    href: '/tools',
+    request: false
   }
 };
 
@@ -54,7 +51,13 @@ const cta = ctas[type];
     <p>{cta.text}</p>
   </div>
 
-  <Button href={cta.href} external={cta.external}>{cta.label}</Button>
+  {
+    cta.request ? (
+      <ExternalFormButton label={cta.label} />
+    ) : (
+      <Button href={cta.href || '/tools'}>{cta.label}</Button>
+    )
+  }
 </section>
 
 <style>
@@ -76,9 +79,9 @@ const cta = ctas[type];
   .cta-section h2 {
     margin: 0;
     color: var(--colour-dark);
-    font-size: clamp(1.45rem, 2.6vw, 2rem);
+    font-size: clamp(1.35rem, 2.4vw, 1.85rem);
     line-height: 1.15;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.035em;
   }
 
   .cta-section p {
