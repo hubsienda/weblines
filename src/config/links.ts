@@ -2,6 +2,7 @@ export const GOOGLE_ENQUIRY_FORM_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLScuxiltnbo4XCA3T892yQaPd-aj-46lbxIGihgzWs8k9fg1gw/viewform';
 
 export const SIENDA_URL = 'https://sienda.co.uk';
+export const SIENDA_IDAAS_URL = 'https://sienda.co.uk/idaas/';
 export const SIENDA_LEGAL_URL = 'https://sienda.co.uk/legal/';
 export const JAMBASTIC_URL = 'https://jambastic.com';
 export const QOOBIX_URL = 'https://qoobix.com';
