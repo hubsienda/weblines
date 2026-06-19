@@ -6,9 +6,24 @@ interface Props {
   type: 'jambastic' | 'qoobix' | 'sienda-media' | 'review' | 'diagnostic';
 }
 
+type CTAConfig =
+  | {
+      title: string;
+      text: string;
+      label: string;
+      request: true;
+    }
+  | {
+      title: string;
+      text: string;
+      label: string;
+      request: false;
+      href: string;
+    };
+
 const { type } = Astro.props;
 
-const ctas = {
+const ctas: Record<Props['type'], CTAConfig> = {
   jambastic: {
     title: 'Need secure temporary exchange?',
     text: 'Jambastic is designed for sensitive information that should be shared, used, and then stop being a permanent readable record.',
@@ -55,7 +70,7 @@ const cta = ctas[type];
     cta.request ? (
       <ExternalFormButton label={cta.label} />
     ) : (
-      <Button href={cta.href || '/tools'}>{cta.label}</Button>
+      <Button href={cta.href}>{cta.label}</Button>
     )
   }
 </section>
