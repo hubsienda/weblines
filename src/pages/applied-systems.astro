@@ -1,0 +1,176 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import CaseStudyCard from '@components/CaseStudyCard.astro';
+import CTASection from '@components/CTASection.astro';
+
+const caseStudies = [
+  {
+    title: 'Inbox Collapse Problem',
+    sector: 'Professional Services',
+    problem: 'Enquiries arrived through email, forms, and social channels. Messages were handled inconsistently, follow-ups were missed, and quality varied across staff.',
+    built: 'A triage workflow that classified inbound messages, extracted intent and urgency, flagged missing information, proposed approved draft replies, and escalated risk cases.',
+    guardrails: 'No pricing, timeline, or professional commitment without human approval. Complaints, legal threats, sensitive data, and unusual cases are escalated.',
+    impact: 'Replies became faster, cleaner, and more consistent. The business reduced avoidable clarification loops and created a safer process for sign-off.',
+    route: {
+      label: 'Request a Business Engineering Review',
+      request: true
+    }
+  },
+  {
+    title: 'Wholesale Order Enquiries',
+    sector: 'Agri-food / Logistics',
+    problem: 'Inbound order messages were short, messy, and often incomplete. Operators had to extract product, quantity, delivery, packaging, and constraint details manually.',
+    built: 'A workflow-driven triage pattern that extracted minimum viable order fields, identified missing essentials, drafted clarification messages, and routed urgent or complex cases.',
+    guardrails: 'No guaranteed stock availability, no invented delivery dates, and escalation for payment risk, disputes, urgency, or special operational constraints.',
+    impact: 'Operators received cleaner information earlier, first replies became structured, and avoidable calls and repeated clarification cycles were reduced.',
+    route: {
+      label: 'Request a Practical Review',
+      request: true
+    }
+  },
+  {
+    title: 'Appointment Requests',
+    sector: 'Local Services',
+    problem: 'Booking requests arrived as informal messages with vague times, incomplete service details, and unclear confirmation requirements.',
+    built: 'A scheduling triage pattern that interpreted requests, asked for missing essentials, drafted consistent confirmation messages, and escalated sensitive cases.',
+    guardrails: 'No appointment confirmation without a verified slot. Timezone, service type, and location requirements are checked before handoff.',
+    impact: 'The business reduced misunderstandings, improved first response quality, and created clearer notes when a human needed to step in.',
+    route: {
+      label: 'Request an AI & Automation Review',
+      request: true
+    }
+  },
+  {
+    title: 'Support Triage',
+    sector: 'Digital Product',
+    problem: 'Support messages mixed account access, billing, bugs, user confusion, and security concerns. Replies varied depending on who handled the issue.',
+    built: 'A support triage workflow that classified issue type, suggested diagnostic questions, drafted replies from approved templates, and logged escalation rules.',
+    guardrails: 'No password requests, no promise of fix timelines, and immediate escalation for account compromise, billing disputes, repeated failures, or security concerns.',
+    impact: 'First responses became faster and safer. Support staff focused on real incidents instead of repeated basic clarification.',
+    route: {
+      label: 'Use Automation or AI?',
+      href: '/tools',
+      request: false
+    }
+  },
+  {
+    title: 'Food Transport Company',
+    sector: 'Temperature-Controlled Deliveries',
+    problem: 'Operations teams handled new shipment requests, changes, delays, proof-of-delivery questions, documentation, and disputes through mixed messages.',
+    built: 'An operations triage workflow that identified message type, extracted logistics-critical fields, produced missing-information checklists, and prepared dispatcher handoffs.',
+    guardrails: 'No ETA promise without operational confirmation. Immediate escalation for food safety risk, temperature breach, accident, complaint, or legal threat.',
+    impact: 'Dispatchers spent less time interpreting messy notes and more time making decisions. Incident escalation became more consistent and documented.',
+    route: {
+      label: 'Request a Practical Review',
+      request: true
+    }
+  },
+  {
+    title: 'Real Estate Agency',
+    sector: 'Lead Handling and Viewing Pipeline',
+    problem: 'Leads arrived from multiple sources with incomplete qualifying information. Agents spent too much time replying, filtering, and correcting viewing prerequisites.',
+    built: 'A lead-handling workflow that classified enquiries, extracted qualifiers, drafted compliance-safe responses, proposed next steps, and escalated risky cases.',
+    guardrails: 'No misleading claims on availability, pricing, or legal terms. No legal or financial advice. Escalation for complaints, discrimination cues, threats, or sensitive data.',
+    impact: 'First responses became faster, viewings were better qualified, and staff stopped retyping the same explanations across channels.',
+    route: {
+      label: 'Request an AI & Automation Review',
+      request: true
+    }
+  },
+  {
+    title: 'Multi-Country Farm Exporter',
+    sector: 'EU / UK / North America Shipments',
+    problem: 'Export enquiries included seasonal availability, grades, certifications, packaging, logistics, Incoterms, and destination-specific compliance requirements.',
+    built: 'A commercial and compliance triage workflow that classified enquiries, extracted deal fields, drafted clarification messages, and escalated compliance risks.',
+    guardrails: 'No final pricing, stock, delivery date, certification, or compliance statement without human validation. Food safety, regulatory demands, disputes, and payment-risk signals are escalated.',
+    impact: 'Enquiries became structured earlier. The business improved consistency while keeping humans firmly in control of commitments.',
+    route: {
+      label: 'Explore QOOBIX',
+      href: '/market-intelligence',
+      request: false
+    }
+  }
+];
+---
+
+<Layout
+  title="Applied Systems"
+  description="Anonymised practical examples of AI-assisted triage, workflow design, operational guardrails, and business systems from Sienda Weblines."
+>
+  <Hero
+    eyebrow="Applied Systems"
+    title="Applied systems, not AI theatre."
+    description="Anonymised examples of practical business systems, AI-assisted triage, operational guardrails, and workflow design."
+    primaryHref="/request-review"
+    primaryLabel="Request a Practical Review"
+    secondaryHref="/tools"
+    secondaryLabel="Diagnostic Tools"
+  />
+
+  <section class="page-section">
+    <div class="container">
+      <SectionHeader
+        title="Bounded, testable, auditable work"
+        description="Most businesses do not need theatrical AI. They need fewer dropped enquiries, cleaner handovers, faster first responses, safer escalation, better records, and systems that behave predictably under real operating conditions."
+      />
+
+      <div class="applied-intro card">
+        <p>
+          The examples below are anonymised and deliberately written at a level that protects
+          client identity, internal systems, and commercial details. The point is not AI magic.
+          The point is bounded, testable, auditable operational systems with guardrails,
+          escalation, verification, and human review.
+        </p>
+      </div>
+
+      <div class="case-study-grid">
+        {
+          caseStudies.map((item) => (
+            <CaseStudyCard
+              title={item.title}
+              sector={item.sector}
+              problem={item.problem}
+              built={item.built}
+              guardrails={item.guardrails}
+              impact={item.impact}
+              route={item.route}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section page-section--soft">
+    <div class="container">
+      <CTASection type="review" />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .applied-intro {
+    max-width: 880px;
+    padding: 1.25rem 1.35rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .applied-intro p {
+    margin: 0;
+    color: var(--colour-muted);
+  }
+
+  .case-study-grid {
+    display: grid;
+    gap: 1.35rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 820px) {
+    .case-study-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
