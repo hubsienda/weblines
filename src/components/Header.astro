@@ -55,7 +55,7 @@ const mobileItems = [
       <div class="nav-dropdown">
         <button class="nav-dropdown__trigger" type="button" aria-expanded="false">
           Solutions
-          <span aria-hidden="true">⌄</span>
+          <span class="nav-dropdown__chevron" aria-hidden="true"></span>
         </button>
 
         <div class="nav-dropdown__panel">
@@ -170,7 +170,7 @@ const mobileItems = [
   .nav-dropdown__trigger {
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.38rem;
     min-height: 40px;
     padding: 0;
     border: 0;
@@ -185,9 +185,21 @@ const mobileItems = [
     color: var(--colour-blue);
   }
 
-  .nav-dropdown__trigger span {
-    font-size: 0.9rem;
-    transform: translateY(-1px);
+  .nav-dropdown__chevron {
+    display: inline-block;
+    width: 0.42rem;
+    height: 0.42rem;
+    margin-top: -0.16rem;
+    border-right: 1.7px solid currentColor;
+    border-bottom: 1.7px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 150ms ease;
+  }
+
+  .nav-dropdown:hover .nav-dropdown__chevron,
+  .nav-dropdown:focus-within .nav-dropdown__chevron {
+    transform: rotate(225deg);
+    margin-top: 0.16rem;
   }
 
   .nav-dropdown__panel {
