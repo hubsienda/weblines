@@ -1,0 +1,18 @@
+---
+import Button from '@components/Button.astro';
+import { GOOGLE_ENQUIRY_FORM_URL } from '../config/links';
+
+interface Props {
+  label?: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+}
+
+const {
+  label = 'Request a Practical Review',
+  variant = 'primary'
+} = Astro.props;
+---
+
+<Button href={GOOGLE_ENQUIRY_FORM_URL} variant={variant} external>
+  {label}
+</Button>
