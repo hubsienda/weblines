@@ -2,19 +2,20 @@
 import Layout from '@layouts/Layout.astro';
 import Hero from '@components/Hero.astro';
 import SectionHeader from '@components/SectionHeader.astro';
-import Button from '@components/Button.astro';
+import ExternalFormButton from '@components/ExternalFormButton.astro';
+import RouteCard from '@components/RouteCard.astro';
 ---
 
 <Layout
   title="Request a Practical Review"
-  description="Request a practical review from Sienda Weblines when the issue involves sensitive information, operational confusion, market uncertainty, AI claims, automation decisions, or expensive technology choices."
+  description="Request a practical review from Sienda Weblines for sensitive information, operational confusion, market uncertainty, AI claims, automation decisions, business systems, data readiness, or expensive technology choices."
 >
   <Hero
     eyebrow="Request Review"
     title="Request a practical review."
-    description="Use this when the issue involves sensitive information, operational confusion, market uncertainty, AI claims, automation decisions, or expensive technology choices."
-    primaryHref="mailto:support@siendaweblines.com"
-    primaryLabel="support@siendaweblines.com"
+    description="Use this when the issue involves sensitive information, operational confusion, market uncertainty, AI claims, automation decisions, business systems, data readiness, or expensive technology choices."
+    primaryHref="/request-review#review-form"
+    primaryLabel="Request a Practical Review"
     secondaryHref="/tools"
     secondaryLabel="Diagnostic Tools"
   />
@@ -22,21 +23,65 @@ import Button from '@components/Button.astro';
   <section class="page-section">
     <div class="container">
       <SectionHeader
-        title="When to request a review"
-        description="A practical review is useful when the situation is too important for guesswork but not yet clear enough for a build, purchase, campaign, automation, AI project, or vendor conversation."
+        title="One form, several serious routes"
+        description="The same review request form can be used when the problem touches secure exchange, market intelligence, AI and automation, business engineering, guides, or other serious enquiries."
       />
 
-      <div class="review-box card">
+      <div class="grid grid--3">
+        <RouteCard
+          title="Jambastic"
+          description="For sensitive temporary information, confidential exchanges, access details, client-related material, and communication risk."
+          href="/secure-exchange"
+          buttonLabel="Secure Exchange"
+        />
+
+        <RouteCard
+          title="QOOBIX"
+          description="For market intelligence, candidate organisations for verification, competitor mapping, and structured commercial analysis."
+          href="/market-intelligence"
+          buttonLabel="Market Intelligence"
+        />
+
+        <RouteCard
+          title="IDAAS"
+          description="For intelligence delivered as a managed practical service where the output must be structured, reviewed, and commercially usable."
+          href="/applied-systems"
+          buttonLabel="Applied Systems"
+        />
+
+        <RouteCard
+          title="AI & Automation"
+          description="For proposals, workflow triage, automation decisions, data readiness, human review, and AI claims that need inspection."
+          href="/ai-automation"
+          buttonLabel="AI & Automation"
+        />
+
+        <RouteCard
+          title="Business Engineering"
+          description="For diagnosis before building, operational confusion, process clarity, workflow design, and useful systems."
+          href="/business-engineering"
+          buttonLabel="Business Engineering"
+        />
+
+        <RouteCard
+          title="Guides and resources"
+          description="For paid guides, downloadable material, field tools, templates, and practical resources from Sienda Media."
+          href="/guides"
+          buttonLabel="Guides"
+        />
+      </div>
+
+      <div id="review-form" class="review-box card">
         <div>
-          <h2>Contact Sienda Weblines</h2>
+          <h2>Request the right review</h2>
           <p>
-            Send a short note describing the problem, the decision you are considering,
-            and what has already been tried. Do not send passwords, access credentials,
-            private client data, or confidential material by ordinary email.
+            Use the form to describe the problem, the decision you are considering,
+            and what has already been tried. Do not include passwords, access credentials,
+            confidential client data, or sensitive operational material in the form.
           </p>
         </div>
 
-        <Button href="mailto:support@siendaweblines.com">support@siendaweblines.com</Button>
+        <ExternalFormButton label="Request a Practical Review" />
       </div>
     </div>
   </section>
@@ -48,15 +93,17 @@ import Button from '@components/Button.astro';
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
+    margin-top: 2rem;
     padding: clamp(1.5rem, 4vw, 2.25rem);
+    scroll-margin-top: 110px;
   }
 
   .review-box h2 {
     margin: 0;
     color: var(--colour-dark);
-    font-size: clamp(1.4rem, 2.7vw, 1.95rem);
+    font-size: clamp(1.35rem, 2.6vw, 1.85rem);
     line-height: 1.15;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.035em;
   }
 
   .review-box p {
