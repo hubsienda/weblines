@@ -9,8 +9,7 @@ export default defineConfig({
     sitemap()
   ],
   redirects: {
-    '/legal': 'https://sienda.co.uk/legal/',
-    '/legal/': 'https://sienda.co.uk/legal/'
+    '/legal': 'https://sienda.co.uk/legal/'
   },
   markdown: {
     shikiConfig: {
