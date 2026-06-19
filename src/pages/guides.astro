@@ -4,6 +4,7 @@ import Hero from '@components/Hero.astro';
 import SectionHeader from '@components/SectionHeader.astro';
 import ExternalLinkCard from '@components/ExternalLinkCard.astro';
 import CTASection from '@components/CTASection.astro';
+import { SIENDA_MEDIA_URL } from '../config/links';
 ---
 
 <Layout
@@ -14,10 +15,10 @@ import CTASection from '@components/CTASection.astro';
     eyebrow="Guides"
     title="Practical guides, not motivational confetti."
     description="Sienda Media contains paid guides, ebooks, diagnostic material, field tools, templates, and downloadable resources for clearer decisions about AI, automation, secure exchange, market intelligence, and business engineering."
-    primaryHref="https://siendamedia.com"
+    primaryHref={SIENDA_MEDIA_URL}
     primaryLabel="Sienda Media"
-    secondaryHref="/field-notes"
-    secondaryLabel="Field Notes"
+    secondaryHref="/request-review"
+    secondaryLabel="Request IDAAS Information"
   />
 
   <section class="page-section">
@@ -31,21 +32,21 @@ import CTASection from '@components/CTASection.astro';
         <ExternalLinkCard
           title="Sienda Media"
           description="Paid guides, ebooks, diagnostic material, templates, field tools, and practical resources."
-          href="https://siendamedia.com"
+          href={SIENDA_MEDIA_URL}
           buttonLabel="Sienda Media"
         />
 
         <ExternalLinkCard
           title="The AI Theatre Detector"
           description="A practical guide for spotting expensive AI nonsense before it becomes a proposal, project, invoice, and quiet internal embarrassment."
-          href="https://siendamedia.com"
+          href={SIENDA_MEDIA_URL}
           buttonLabel="Guides"
         />
 
         <ExternalLinkCard
           title="Field tools"
           description="Practical material for clearer technology, process, communication, and market decisions."
-          href="https://siendamedia.com"
+          href={SIENDA_MEDIA_URL}
           buttonLabel="Resources"
         />
       </div>
