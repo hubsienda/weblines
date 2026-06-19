@@ -5,6 +5,10 @@ import SectionHeader from '@components/SectionHeader.astro';
 import ToolCard from '@components/ToolCard.astro';
 import RouteCard from '@components/RouteCard.astro';
 import CTASection from '@components/CTASection.astro';
+import {
+  TALLY_AI_THEATRE_DETECTOR_URL,
+  TALLY_AUTOMATION_OR_AI_URL
+} from '../config/links';
 ---
 
 <Layout
@@ -15,10 +19,10 @@ import CTASection from '@components/CTASection.astro';
     eyebrow="AI & Automation"
     title="AI is sometimes useful. Confusion is not."
     description="Many business problems dressed as AI are actually poor data, weak process, unclear responsibility, missing structure, bad procurement, or ordinary automation wearing a borrowed costume."
-    primaryHref="https://tally.so/r/aQlYlb"
+    primaryHref={TALLY_AI_THEATRE_DETECTOR_URL}
     primaryLabel="AI Theatre Detector"
-    secondaryHref="https://tally.so/r/ZjQvZy"
-    secondaryLabel="Automation or AI?"
+    secondaryHref="/request-review"
+    secondaryLabel="Request an AI & Automation Review"
   />
 
   <section class="page-section">
@@ -65,7 +69,7 @@ import CTASection from '@components/CTASection.astro';
           title="AI Theatre Detector"
           description="Tests whether an AI proposal, platform, consultant, project, or internal idea is commercially useful or decorative fog."
           route="Sienda Media, review, or AI & Automation Field Notes."
-          href="https://tally.so/r/aQlYlb"
+          href={TALLY_AI_THEATRE_DETECTOR_URL}
           buttonLabel="AI Theatre Detector"
         />
 
@@ -73,12 +77,12 @@ import CTASection from '@components/CTASection.astro';
           title="Automation or AI?"
           description="Tests whether the issue needs AI, automation, better data, a clearer process, a database, a form, a spreadsheet, or human review."
           route="Business engineering or practical review."
-          href="https://tally.so/r/ZjQvZy"
+          href={TALLY_AUTOMATION_OR_AI_URL}
           buttonLabel="Automation or AI?"
         />
       </div>
 
-      <CTASection type="sienda-media" />
+      <CTASection type="review" />
     </div>
   </section>
 </Layout>
