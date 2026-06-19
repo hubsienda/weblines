@@ -6,8 +6,16 @@ import ToolCard from '@components/ToolCard.astro';
 import RouteCard from '@components/RouteCard.astro';
 import ArticleCard from '@components/ArticleCard.astro';
 import CTASection from '@components/CTASection.astro';
+import ExternalFormButton from '@components/ExternalFormButton.astro';
+import Button from '@components/Button.astro';
 import { getCollection } from 'astro:content';
 import { getFieldNoteSlug } from '../utils/fieldNotes';
+import {
+  TALLY_AI_THEATRE_DETECTOR_URL,
+  TALLY_AUTOMATION_OR_AI_URL,
+  TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL,
+  TALLY_EMAIL_RISK_CHECKER_URL
+} from '../config/links';
 
 const notes = await getCollection('fieldNotes');
 const featuredNotes = notes
@@ -44,7 +52,7 @@ const featuredNotes = notes
           description="For sensitive information, access details, client data, private instructions, and anything that should not become a permanent readable record."
           bestFor="Quick communication-risk checks."
           route="Email Risk Checker, then Jambastic where appropriate."
-          href="https://tally.so/r/lb4dy5"
+          href={TALLY_EMAIL_RISK_CHECKER_URL}
           buttonLabel="Email Risk Checker"
         />
 
@@ -53,7 +61,7 @@ const featuredNotes = notes
           description="For professional firms, advisers, consultants, agencies, and high-trust environments handling sensitive exchanges."
           bestFor="Sensitive temporary exchanges."
           route="Confidential checker, then Jambastic or review."
-          href="https://tally.so/r/RGr8DK"
+          href={TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL}
           buttonLabel="Risk Checker"
         />
 
@@ -62,7 +70,7 @@ const featuredNotes = notes
           description="For proposals, platforms, consultants, internal projects, and “AI solutions” that may be more costume than substance."
           bestFor="AI claims before money is spent."
           route="Detector, guide, or practical review."
-          href="https://tally.so/r/aQlYlb"
+          href={TALLY_AI_THEATRE_DETECTOR_URL}
           buttonLabel="AI Theatre Detector"
         />
 
@@ -71,7 +79,7 @@ const featuredNotes = notes
           description="For businesses unsure whether they need AI, automation, better data, clearer processes, a database, a form, or human review."
           bestFor="Technology decisions before procurement."
           route="Diagnostic, review, or business engineering."
-          href="https://tally.so/r/ZjQvZy"
+          href={TALLY_AUTOMATION_OR_AI_URL}
           buttonLabel="Automation or AI?"
         />
       </div>
@@ -102,23 +110,43 @@ const featuredNotes = notes
         />
 
         <RouteCard
+          title="Applied systems"
+          description="Anonymised examples of triage, guardrails, structured handoff, escalation, human review, and practical workflow design."
+          href="/applied-systems"
+          buttonLabel="Applied Systems"
+        />
+
+        <RouteCard
           title="Guides and field tools"
           description="For paid guides, diagnostic material, templates, ebooks, and practical downloadable resources."
           href="/guides"
           buttonLabel="Guides"
-        />
-
-        <RouteCard
-          title="Company doctrine"
-          description="For the institutional Sienda view: diagnosis before building, useful systems, commercial clarity, and no technology theatre."
-          href="https://sienda.co.uk"
-          buttonLabel="Sienda Ltd"
         />
       </div>
     </div>
   </section>
 
   <section class="page-section">
+    <div class="container">
+      <div class="applied-strip card">
+        <div>
+          <p class="eyebrow">Applied Systems</p>
+          <h2>Applied systems, not AI theatre.</h2>
+          <p>
+            See anonymised examples of practical systems built around triage,
+            guardrails, escalation, structured information, and human review.
+          </p>
+        </div>
+
+        <div class="applied-strip__actions">
+          <Button href="/applied-systems" variant="secondary">Applied Systems</Button>
+          <ExternalFormButton label="Request a Practical Review" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section page-section--soft">
     <div class="container">
       <SectionHeader
         eyebrow="Field Notes"
@@ -148,7 +176,7 @@ const featuredNotes = notes
     </div>
   </section>
 
-  <section class="page-section page-section--soft">
+  <section class="page-section">
     <div class="container">
       <CTASection type="review" />
     </div>
@@ -160,5 +188,43 @@ const featuredNotes = notes
     max-width: 680px;
     margin: 0;
     color: var(--colour-muted);
+  }
+
+  .applied-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: clamp(1.5rem, 4vw, 2.25rem);
+    background:
+      radial-gradient(circle at top right, rgba(0, 153, 255, 0.11), transparent 24rem),
+      var(--colour-white);
+  }
+
+  .applied-strip h2 {
+    margin: 0.35rem 0 0;
+    color: var(--colour-dark);
+    font-size: clamp(1.55rem, 3vw, 2.1rem);
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+  }
+
+  .applied-strip p:not(.eyebrow) {
+    max-width: 680px;
+    margin: 0.8rem 0 0;
+    color: var(--colour-muted);
+  }
+
+  .applied-strip__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    flex: 0 0 auto;
+  }
+
+  @media (max-width: 820px) {
+    .applied-strip {
+      display: grid;
+    }
   }
 </style>
