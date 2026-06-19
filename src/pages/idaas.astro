@@ -1,0 +1,388 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import SectionHeader from '@components/SectionHeader.astro';
+import RouteCard from '@components/RouteCard.astro';
+import CTASection from '@components/CTASection.astro';
+import ExternalFormButton from '@components/ExternalFormButton.astro';
+import Button from '@components/Button.astro';
+import { QOOBIX_URL, SIENDA_MEDIA_URL } from '../config/links';
+
+const deliverables = [
+  'Market analysis',
+  'Competitor mapping',
+  'Candidate organisations for verification',
+  'Market-entry intelligence',
+  'Partner / distributor research',
+  'Commercial opportunity review',
+  'Website and positioning review',
+  'Business intelligence briefings'
+];
+
+const notItems = [
+  'Software access',
+  'A subscription dashboard',
+  'A generic lead database',
+  'A fake AI lead machine',
+  'A replacement for human commercial judgement'
+];
+
+const steps = [
+  {
+    title: 'You define the commercial question',
+    text: 'The target country, sector, customer type, competitors, partners, market problem, or business objective.'
+  },
+  {
+    title: 'Sienda structures the intelligence request',
+    text: 'The work is framed clearly before analysis begins.'
+  },
+  {
+    title: 'Sienda performs the research and analysis',
+    text: 'Using QOOBIX methods, business engineering judgement, and controlled research processes.'
+  },
+  {
+    title: 'You receive structured outputs',
+    text: 'Reports, summaries, tables, candidate organisations for verification, and practical next steps.'
+  }
+];
+---
+
+<Layout
+  title="IDAAS: Intelligence Delivered as a Service"
+  description="Managed market intelligence and business analysis from Sienda for organisations that need the result, not another software environment to operate."
+>
+  <Hero
+    eyebrow="IDAAS"
+    title="Intelligence delivered as a service."
+    description="IDAAS is for organisations that need structured market intelligence, competitor analysis, opportunity research, or candidate-organisation discovery without buying or operating QOOBIX directly. Sienda performs the intelligence work and delivers the results as a service."
+    primaryHref="/request-review"
+    primaryLabel="Request IDAAS Information"
+    secondaryHref={QOOBIX_URL}
+    secondaryLabel="Explore QOOBIX"
+  />
+
+  <section class="page-section">
+    <div class="container">
+      <SectionHeader
+        title="QOOBIX and IDAAS are not the same thing"
+        description="They are related routes, but they are not interchangeable."
+      />
+
+      <div class="comparison-grid">
+        <article class="comparison-card card">
+          <p class="comparison-card__label">QOOBIX</p>
+          <h2>The intelligence environment</h2>
+          <p>
+            QOOBIX is the private intelligence environment for clients who want provisioned
+            access to a structured system for market analysis, discovery, and intelligence outputs.
+          </p>
+          <Button href={QOOBIX_URL} variant="secondary">Explore QOOBIX</Button>
+        </article>
+
+        <article class="comparison-card card">
+          <p class="comparison-card__label">IDAAS</p>
+          <h2>The managed service</h2>
+          <p>
+            IDAAS is for clients who want Sienda to perform the research, analysis,
+            structuring, and delivery of intelligence outputs without asking their team
+            to operate another software environment.
+          </p>
+          <ExternalFormButton label="Request IDAAS Information" />
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section page-section--soft">
+    <div class="container">
+      <SectionHeader
+        title="When IDAAS is the right fit"
+        description="IDAAS is for organisations that need structured commercial intelligence, but want the result delivered as a managed service."
+      />
+
+      <div class="grid grid--3">
+        <RouteCard
+          title="Market intelligence without software operation"
+          description="For teams that need the analysis but do not want to learn, manage, or maintain another platform."
+          href="/request-review"
+          buttonLabel="Request IDAAS Information"
+        />
+
+        <RouteCard
+          title="Competitor and market-entry analysis"
+          description="For organisations examining a new country, sector, region, product opportunity, competitor landscape, or distribution channel."
+          href="/market-intelligence"
+          buttonLabel="Market Intelligence"
+        />
+
+        <RouteCard
+          title="Candidate organisations for verification"
+          description="For research into possible market actors, partners, distributors, or prospects that must still be checked by human commercial judgement."
+          href="/request-review"
+          buttonLabel="Request Review"
+        />
+
+        <RouteCard
+          title="One-off or periodic intelligence"
+          description="For businesses that need an intelligence package now, or recurring research support without adopting software."
+          href="/request-review"
+          buttonLabel="Request IDAAS Information"
+        />
+
+        <RouteCard
+          title="Business engineering judgement"
+          description="For commercial research that needs structure, context, verification discipline, and practical next steps."
+          href="/business-engineering"
+          buttonLabel="Business Engineering"
+        />
+
+        <RouteCard
+          title="Decisions before commercial action"
+          description="For companies preparing market entry, partner approaches, sales activity, distribution planning, or strategic review."
+          href="/applied-systems"
+          buttonLabel="Applied Systems"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <SectionHeader
+        title="What IDAAS can deliver"
+        description="Outputs depend on the commercial question. The aim is structured intelligence, not decorative data."
+      />
+
+      <div class="deliverable-grid">
+        {
+          deliverables.map((item) => (
+            <article class="deliverable-card card">
+              <h2>{item}</h2>
+            </article>
+          ))
+        }
+      </div>
+
+      <p class="clarity-note">
+        Candidate organisations are provided for verification. They are not guaranteed leads,
+        qualified leads, confirmed partners, or ready buyers.
+      </p>
+    </div>
+  </section>
+
+  <section class="page-section page-section--soft">
+    <div class="container">
+      <SectionHeader
+        title="What IDAAS is not"
+        description="The service is deliberately bounded. That is the point."
+      />
+
+      <div class="not-grid">
+        {
+          notItems.map((item) => (
+            <article class="not-card card">
+              <span aria-hidden="true">×</span>
+              <h2>{item}</h2>
+            </article>
+          ))
+        }
+      </div>
+
+      <p class="clarity-note">
+        IDAAS is a delivered intelligence service. It supports commercial judgement;
+        it does not replace it.
+      </p>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <SectionHeader
+        title="How it works"
+        description="The process is simple, but the framing matters."
+      />
+
+      <div class="steps-grid">
+        {
+          steps.map((step, index) => (
+            <article class="step-card card">
+              <span>{index + 1}</span>
+              <h2>{step.title}</h2>
+              <p>{step.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section page-section--soft">
+    <div class="container">
+      <SectionHeader
+        title="Choose the right route"
+        description="QOOBIX, IDAAS, and Sienda Media serve different needs."
+      />
+
+      <div class="comparison-grid comparison-grid--three">
+        <article class="comparison-card card">
+          <p class="comparison-card__label">QOOBIX</p>
+          <h2>Choose QOOBIX if</h2>
+          <p>You want access to a provisioned intelligence environment.</p>
+          <Button href={QOOBIX_URL} variant="secondary">Explore QOOBIX</Button>
+        </article>
+
+        <article class="comparison-card card">
+          <p class="comparison-card__label">IDAAS</p>
+          <h2>Choose IDAAS if</h2>
+          <p>You want Sienda to deliver the intelligence work for you.</p>
+          <ExternalFormButton label="Request IDAAS Information" />
+        </article>
+
+        <article class="comparison-card card">
+          <p class="comparison-card__label">Sienda Media</p>
+          <h2>Choose Sienda Media if</h2>
+          <p>You want paid guides, ebooks, templates, or downloadable material.</p>
+          <Button href={SIENDA_MEDIA_URL} variant="secondary">Sienda Media</Button>
+        </article>
+      </div>
+
+      <CTASection type="idaas" />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .comparison-grid,
+  .steps-grid,
+  .deliverable-grid,
+  .not-grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .comparison-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .comparison-grid--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .deliverable-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .not-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .steps-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .comparison-card,
+  .deliverable-card,
+  .not-card,
+  .step-card {
+    padding: 1.25rem;
+  }
+
+  .comparison-card {
+    display: grid;
+    align-content: space-between;
+    gap: 1rem;
+  }
+
+  .comparison-card__label {
+    margin: 0;
+    color: var(--colour-blue);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .comparison-card h2,
+  .deliverable-card h2,
+  .not-card h2,
+  .step-card h2 {
+    margin: 0;
+    color: var(--colour-dark);
+    font-size: clamp(1.12rem, 2vw, 1.35rem);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  .comparison-card p:not(.comparison-card__label),
+  .step-card p {
+    margin: 0;
+    color: var(--colour-muted);
+  }
+
+  .deliverable-card {
+    display: flex;
+    align-items: center;
+    min-height: 110px;
+  }
+
+  .not-card {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .not-card span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-button);
+    background: var(--colour-blue-soft);
+    color: var(--colour-blue);
+    font-weight: 900;
+  }
+
+  .step-card {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .step-card span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-button);
+    background: var(--colour-blue);
+    color: var(--colour-white);
+    font-weight: 900;
+  }
+
+  .clarity-note {
+    max-width: 760px;
+    margin: 1.5rem 0 0;
+    color: var(--colour-muted);
+    font-weight: 700;
+  }
+
+  @media (max-width: 980px) {
+    .comparison-grid,
+    .comparison-grid--three,
+    .deliverable-grid,
+    .not-grid,
+    .steps-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .comparison-grid,
+    .comparison-grid--three,
+    .deliverable-grid,
+    .not-grid,
+    .steps-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
