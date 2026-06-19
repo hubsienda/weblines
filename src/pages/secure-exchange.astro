@@ -5,6 +5,11 @@ import SectionHeader from '@components/SectionHeader.astro';
 import ToolCard from '@components/ToolCard.astro';
 import RouteCard from '@components/RouteCard.astro';
 import CTASection from '@components/CTASection.astro';
+import {
+  JAMBASTIC_URL,
+  TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL,
+  TALLY_EMAIL_RISK_CHECKER_URL
+} from '../config/links';
 ---
 
 <Layout
@@ -15,10 +20,10 @@ import CTASection from '@components/CTASection.astro';
     eyebrow="Secure Exchange"
     title="Not every message deserves a permanent readable life."
     description="Email and chat are useful. They are also searchable, forwardable, archivable, backed up, screenshotted, exported, and rediscovered later when everyone suddenly becomes very interested in what was said."
-    primaryHref="https://jambastic.com"
+    primaryHref={JAMBASTIC_URL}
     primaryLabel="Jambastic"
-    secondaryHref="/tools"
-    secondaryLabel="Diagnostic Tools"
+    secondaryHref="/request-review"
+    secondaryLabel="Request a Jambastic Review"
   />
 
   <section class="page-section">
@@ -32,7 +37,7 @@ import CTASection from '@components/CTASection.astro';
         <RouteCard
           title="Temporary sensitive information"
           description="Passwords, private links, client identity details, settlement figures, access instructions, payroll details, signing information, confidential notes, and private instructions should not live forever in ordinary channels."
-          href="https://jambastic.com"
+          href={JAMBASTIC_URL}
           buttonLabel="Jambastic"
         />
 
@@ -66,7 +71,7 @@ import CTASection from '@components/CTASection.astro';
           description="A fast check for deciding whether the information belongs in ordinary email."
           bestFor="Sensitive information that may become a permanent readable record."
           route="Jambastic."
-          href="https://tally.so/r/lb4dy5"
+          href={TALLY_EMAIL_RISK_CHECKER_URL}
           buttonLabel="Email Risk Checker"
         />
 
@@ -75,7 +80,7 @@ import CTASection from '@components/CTASection.astro';
           description="A broader risk diagnostic for professional firms and high-trust environments."
           bestFor="Client-related, confidential, access-related, or commercially sensitive communication."
           route="Jambastic or practical review."
-          href="https://tally.so/r/RGr8DK"
+          href={TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL}
           buttonLabel="Risk Checker"
         />
       </div>
