@@ -1,0 +1,125 @@
+---
+import Button from '@components/Button.astro';
+import ExternalFormButton from '@components/ExternalFormButton.astro';
+
+interface RouteAction {
+  label: string;
+  href?: string;
+  request?: boolean;
+}
+
+interface Props {
+  title: string;
+  sector: string;
+  problem: string;
+  built: string;
+  guardrails: string;
+  impact: string;
+  route: RouteAction;
+}
+
+const {
+  title,
+  sector,
+  problem,
+  built,
+  guardrails,
+  impact,
+  route
+} = Astro.props;
+---
+
+<article class="case-study-card card">
+  <header class="case-study-card__header">
+    <p>{sector}</p>
+    <h2>{title}</h2>
+  </header>
+
+  <div class="case-study-card__body">
+    <section>
+      <h3>Problem</h3>
+      <p>{problem}</p>
+    </section>
+
+    <section>
+      <h3>What was built</h3>
+      <p>{built}</p>
+    </section>
+
+    <section>
+      <h3>Guardrails</h3>
+      <p>{guardrails}</p>
+    </section>
+
+    <section>
+      <h3>Operational impact</h3>
+      <p>{impact}</p>
+    </section>
+  </div>
+
+  <footer class="case-study-card__footer">
+    {
+      route.request ? (
+        <ExternalFormButton label={route.label} />
+      ) : (
+        <Button href={route.href || '/tools'} variant="secondary">
+          {route.label}
+        </Button>
+      )
+    }
+  </footer>
+</article>
+
+<style>
+  .case-study-card {
+    display: grid;
+    gap: 1.15rem;
+    padding: clamp(1.25rem, 3vw, 1.65rem);
+  }
+
+  .case-study-card__header p {
+    margin: 0 0 0.45rem;
+    color: var(--colour-blue);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .case-study-card__header h2 {
+    margin: 0;
+    color: var(--colour-dark);
+    font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+    line-height: 1.18;
+    letter-spacing: -0.035em;
+  }
+
+  .case-study-card__body {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .case-study-card__body section {
+    padding-top: 1rem;
+    border-top: 1px solid var(--colour-line);
+  }
+
+  .case-study-card__body h3 {
+    margin: 0 0 0.35rem;
+    color: var(--colour-dark);
+    font-size: 0.92rem;
+    line-height: 1.25;
+    letter-spacing: 0;
+  }
+
+  .case-study-card__body p {
+    margin: 0;
+    color: var(--colour-muted);
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+
+  .case-study-card__footer {
+    padding-top: 0.4rem;
+  }
+</style>
