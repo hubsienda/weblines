@@ -4,6 +4,12 @@ import Hero from '@components/Hero.astro';
 import SectionHeader from '@components/SectionHeader.astro';
 import ToolCard from '@components/ToolCard.astro';
 import CTASection from '@components/CTASection.astro';
+import {
+  TALLY_AI_THEATRE_DETECTOR_URL,
+  TALLY_AUTOMATION_OR_AI_URL,
+  TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL,
+  TALLY_EMAIL_RISK_CHECKER_URL
+} from '../config/links';
 ---
 
 <Layout
@@ -35,7 +41,7 @@ import CTASection from '@components/CTASection.astro';
           bestFor="Professionals who need a fast answer before sending information through ordinary email."
           whenToUse="Before sending passwords, access links, confidential notes, private instructions, client details, settlement figures, payroll instructions, or similar material."
           route="Jambastic, when the information should not become a permanent readable record."
-          href="https://tally.so/r/lb4dy5"
+          href={TALLY_EMAIL_RISK_CHECKER_URL}
           buttonLabel="Email Risk Checker"
         />
 
@@ -46,7 +52,7 @@ import CTASection from '@components/CTASection.astro';
           bestFor="Law firms, accountants, advisers, consultants, agencies, private offices, and other high-trust environments."
           whenToUse="When the exchange involves responsibility, client trust, professional confidentiality, access data, identity details, commercial sensitivity, or operational risk."
           route="Jambastic, or a practical review if the communication process itself needs redesigning."
-          href="https://tally.so/r/RGr8DK"
+          href={TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL}
           buttonLabel="Risk Checker"
         />
 
@@ -57,7 +63,7 @@ import CTASection from '@components/CTASection.astro';
           bestFor="Business owners, managers, consultants, and teams evaluating AI claims."
           whenToUse="Before buying, approving, presenting, recommending, or internally celebrating an AI initiative."
           route="Sienda Media guides, AI & Automation Field Notes, or a focused practical review."
-          href="https://tally.so/r/aQlYlb"
+          href={TALLY_AI_THEATRE_DETECTOR_URL}
           buttonLabel="AI Theatre Detector"
         />
 
@@ -68,7 +74,7 @@ import CTASection from '@components/CTASection.astro';
           bestFor="Teams facing confusing technology decisions."
           whenToUse="Before building, buying, automating, connecting systems, asking for AI, or creating yet another spreadsheet with delusions of grandeur."
           route="Business engineering, practical review, or the right product route."
-          href="https://tally.so/r/ZjQvZy"
+          href={TALLY_AUTOMATION_OR_AI_URL}
           buttonLabel="Automation or AI?"
         />
       </div>
