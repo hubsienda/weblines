@@ -1,16 +1,24 @@
 ---
+import {
+  JAMBASTIC_URL,
+  QOOBIX_URL,
+  SIENDA_LEGAL_URL,
+  SIENDA_MEDIA_URL
+} from '../config/links';
+
 const footerLinks = [
   { href: '/tools', label: 'Tools' },
   { href: '/field-notes', label: 'Field Notes' },
+  { href: '/applied-systems', label: 'Applied Systems' },
   { href: '/secure-exchange', label: 'Secure Exchange' },
   { href: '/ai-automation', label: 'AI & Automation' },
   { href: '/market-intelligence', label: 'Market Intelligence' },
   { href: '/guides', label: 'Guides' },
   { href: '/request-review', label: 'Request Review' },
-  { href: 'https://jambastic.com', label: 'Jambastic' },
-  { href: 'https://qoobix.com', label: 'QOOBIX' },
-  { href: 'https://siendamedia.com', label: 'Sienda Media' },
-  { href: 'https://sienda.co.uk/legal/', label: 'Legal' }
+  { href: JAMBASTIC_URL, label: 'Jambastic' },
+  { href: QOOBIX_URL, label: 'QOOBIX' },
+  { href: SIENDA_MEDIA_URL, label: 'Sienda Media' },
+  { href: SIENDA_LEGAL_URL, label: 'Legal' }
 ];
 
 const year = new Date().getFullYear();
