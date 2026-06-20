@@ -95,6 +95,27 @@ const steps = [
 
   <section class="page-section page-section--soft">
     <div class="container">
+      <div class="review-strip card">
+        <div>
+          <p class="eyebrow">Market Intelligence Review</p>
+          <h2>Not sure whether you need QOOBIX or IDAAS?</h2>
+          <p>
+            A Market Intelligence Review can clarify whether the better route is a
+            provisioned QOOBIX environment, an IDAAS project delivered by Sienda,
+            or a smaller intelligence brief.
+          </p>
+        </div>
+
+        <div class="review-strip__actions">
+          <ExternalFormButton label="Request a Market Intelligence Review" />
+          <Button href={QOOBIX_URL} variant="secondary">Explore QOOBIX</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
       <SectionHeader
         title="When IDAAS is the right fit"
         description="IDAAS is for organisations that need structured commercial intelligence, but want the result delivered as a managed service."
@@ -139,14 +160,14 @@ const steps = [
         <RouteCard
           title="Decisions before commercial action"
           description="For companies preparing market entry, partner approaches, sales activity, distribution planning, or strategic review."
-          href="/applied-systems"
-          buttonLabel="Applied Systems"
+          href="/request-review"
+          buttonLabel="Market Intelligence Review"
         />
       </div>
     </div>
   </section>
 
-  <section class="page-section">
+  <section class="page-section page-section--soft">
     <div class="container">
       <SectionHeader
         title="What IDAAS can deliver"
@@ -170,7 +191,7 @@ const steps = [
     </div>
   </section>
 
-  <section class="page-section page-section--soft">
+  <section class="page-section">
     <div class="container">
       <SectionHeader
         title="What IDAAS is not"
@@ -195,7 +216,7 @@ const steps = [
     </div>
   </section>
 
-  <section class="page-section">
+  <section class="page-section page-section--soft">
     <div class="container">
       <SectionHeader
         title="How it works"
@@ -212,38 +233,6 @@ const steps = [
             </article>
           ))
         }
-      </div>
-    </div>
-  </section>
-
-  <section class="page-section page-section--soft">
-    <div class="container">
-      <SectionHeader
-        title="Choose the right route"
-        description="QOOBIX, IDAAS, and Sienda Media serve different needs."
-      />
-
-      <div class="comparison-grid comparison-grid--three">
-        <article class="comparison-card card">
-          <p class="comparison-card__label">QOOBIX</p>
-          <h2>Choose QOOBIX if</h2>
-          <p>You want access to a provisioned intelligence environment.</p>
-          <Button href={QOOBIX_URL} variant="secondary">Explore QOOBIX</Button>
-        </article>
-
-        <article class="comparison-card card">
-          <p class="comparison-card__label">IDAAS</p>
-          <h2>Choose IDAAS if</h2>
-          <p>You want Sienda to deliver the intelligence work for you.</p>
-          <ExternalFormButton label="Request IDAAS Information" />
-        </article>
-
-        <article class="comparison-card card">
-          <p class="comparison-card__label">Sienda Media</p>
-          <h2>Choose Sienda Media if</h2>
-          <p>You want paid guides, ebooks, templates, or downloadable material.</p>
-          <Button href={SIENDA_MEDIA_URL} variant="secondary">Sienda Media</Button>
-        </article>
       </div>
 
       <CTASection type="idaas" />
@@ -264,10 +253,6 @@ const steps = [
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .comparison-grid--three {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .deliverable-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -283,7 +268,8 @@ const steps = [
   .comparison-card,
   .deliverable-card,
   .not-card,
-  .step-card {
+  .step-card,
+  .review-strip {
     padding: 1.25rem;
   }
 
@@ -305,7 +291,8 @@ const steps = [
   .comparison-card h2,
   .deliverable-card h2,
   .not-card h2,
-  .step-card h2 {
+  .step-card h2,
+  .review-strip h2 {
     margin: 0;
     color: var(--colour-dark);
     font-size: clamp(1.12rem, 2vw, 1.35rem);
@@ -314,7 +301,8 @@ const steps = [
   }
 
   .comparison-card p:not(.comparison-card__label),
-  .step-card p {
+  .step-card p,
+  .review-strip p:not(.eyebrow) {
     margin: 0;
     color: var(--colour-muted);
   }
@@ -359,6 +347,28 @@ const steps = [
     font-weight: 900;
   }
 
+  .review-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    background:
+      radial-gradient(circle at top right, rgba(0, 153, 255, 0.1), transparent 24rem),
+      var(--colour-white);
+  }
+
+  .review-strip p:not(.eyebrow) {
+    max-width: 760px;
+    margin-top: 0.75rem;
+  }
+
+  .review-strip__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    flex: 0 0 auto;
+  }
+
   .clarity-note {
     max-width: 760px;
     margin: 1.5rem 0 0;
@@ -368,17 +378,19 @@ const steps = [
 
   @media (max-width: 980px) {
     .comparison-grid,
-    .comparison-grid--three,
     .deliverable-grid,
     .not-grid,
     .steps-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .review-strip {
+      display: grid;
+    }
   }
 
   @media (max-width: 640px) {
     .comparison-grid,
-    .comparison-grid--three,
     .deliverable-grid,
     .not-grid,
     .steps-grid {
