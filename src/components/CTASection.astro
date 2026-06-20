@@ -4,7 +4,17 @@ import ExternalFormButton from '@components/ExternalFormButton.astro';
 import { SIENDA_MEDIA_URL } from '../config/links';
 
 interface Props {
-  type: 'jambastic' | 'qoobix' | 'sienda-media' | 'review' | 'diagnostic' | 'idaas';
+  type:
+    | 'review'
+    | 'secure-review'
+    | 'market-review'
+    | 'ai-review'
+    | 'business-review'
+    | 'jambastic'
+    | 'qoobix'
+    | 'idaas'
+    | 'sienda-media'
+    | 'diagnostic';
 }
 
 type CTAConfig =
@@ -25,16 +35,46 @@ type CTAConfig =
 const { type } = Astro.props;
 
 const ctas: Record<Props['type'], CTAConfig> = {
+  review: {
+    title: 'Start with a practical review.',
+    text: 'Use the review when the next step is commercially important and the wrong decision would cost time, money, trust, or operational clarity.',
+    label: 'Request a Practical Review',
+    request: true
+  },
+  'secure-review': {
+    title: 'Need a Secure Information Review?',
+    text: 'Use this when sensitive, temporary, client-related, access-related, or commercially important information is being exchanged through ordinary channels.',
+    label: 'Request a Secure Information Review',
+    request: true
+  },
+  'market-review': {
+    title: 'Need a Market Intelligence Review?',
+    text: 'Use this when the market question, competitor field, partner route, or candidate-organisation research needs to be clarified before choosing QOOBIX, IDAAS, or a smaller intelligence brief.',
+    label: 'Request a Market Intelligence Review',
+    request: true
+  },
+  'ai-review': {
+    title: 'Need an AI & Automation Review?',
+    text: 'Use this when the business is unsure whether the problem needs AI, ordinary automation, better data, clearer processes, a database, or human review.',
+    label: 'Request an AI & Automation Review',
+    request: true
+  },
+  'business-review': {
+    title: 'Need a Business Engineering Review?',
+    text: 'Use this when the problem involves operational mess, weak process, unclear responsibility, data confusion, or expensive technology uncertainty.',
+    label: 'Request a Business Engineering Review',
+    request: true
+  },
   jambastic: {
     title: 'Need secure temporary exchange?',
-    text: 'Jambastic is designed for sensitive information that should be shared, used, and then stop being a permanent readable record.',
-    label: 'Request a Jambastic Review',
+    text: 'Jambastic may be the right route after the problem has been reviewed and the sensitive exchange risk is clear.',
+    label: 'Request a Secure Information Review',
     request: true
   },
   qoobix: {
-    title: 'Need clearer market intelligence?',
-    text: 'QOOBIX helps organisations analyse markets, detect opportunity, and produce structured intelligence for practical action.',
-    label: 'Request a QOOBIX Review',
+    title: 'Considering QOOBIX?',
+    text: 'A Market Intelligence Review can clarify whether QOOBIX, IDAAS, or a smaller intelligence brief is the right route.',
+    label: 'Request a Market Intelligence Review',
     request: true
   },
   idaas: {
@@ -49,12 +89,6 @@ const ctas: Record<Props['type'], CTAConfig> = {
     label: 'Sienda Media',
     href: SIENDA_MEDIA_URL,
     request: false
-  },
-  review: {
-    title: 'Need a practical review?',
-    text: 'If the problem involves risk, process, data, AI, automation, sensitive information, or market uncertainty, start with a focused review.',
-    label: 'Request a Practical Review',
-    request: true
   },
   diagnostic: {
     title: 'Start with a diagnostic.',
