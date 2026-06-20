@@ -11,6 +11,7 @@ import Button from '@components/Button.astro';
 import { getCollection } from 'astro:content';
 import { getFieldNoteSlug } from '../utils/fieldNotes';
 import {
+  GOOGLE_ENQUIRY_FORM_URL,
   TALLY_AI_THEATRE_DETECTOR_URL,
   TALLY_AUTOMATION_OR_AI_URL,
   TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL,
@@ -22,20 +23,39 @@ const featuredNotes = notes
   .filter((note) => note.data.featured)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
+
+const reviewTracks = [
+  {
+    title: 'Secure Information Review',
+    text: 'For sensitive short-lived information, exposed communication habits, access details, and confidential exchange risk.'
+  },
+  {
+    title: 'Market Intelligence Review',
+    text: 'For market uncertainty, competitor fields, partner routes, candidate organisations for verification, QOOBIX, or IDAAS.'
+  },
+  {
+    title: 'AI & Automation Review',
+    text: 'For unclear AI claims, automation decisions, data readiness, process confusion, and human-review controls.'
+  },
+  {
+    title: 'Business Engineering Review',
+    text: 'For operational friction, weak systems, software uncertainty, unclear responsibility, and practical next steps.'
+  }
+];
 ---
 
 <Layout
   title="Sienda Weblines"
-  description="Practical diagnostics and field notes for better business decisions, secure information exchange, market intelligence, AI realism, automation, and business engineering."
+  description="Practical diagnostics, field notes, applied systems, and review routes from Sienda for better business decisions."
 >
   <Hero
     eyebrow="Sienda Weblines"
-    title="Practical diagnostics for better business decisions."
-    description="Test whether your business problem needs secure exchange, AI, automation, better data, market intelligence, or a clearer process before money is spent badly."
-    primaryHref="/tools"
-    primaryLabel="Diagnostic Tools"
-    secondaryHref="/request-review"
-    secondaryLabel="Practical Review"
+    title="Diagnose the problem before choosing the solution."
+    description="Before buying software, automating a process, trusting an AI proposal, exposing sensitive information, or entering a market, get the problem reviewed properly."
+    primaryHref={GOOGLE_ENQUIRY_FORM_URL}
+    primaryLabel="Request a Practical Review"
+    secondaryHref="/tools"
+    secondaryLabel="Diagnostic Tools"
   />
 
   <section class="page-section">
@@ -43,7 +63,7 @@ const featuredNotes = notes
       <SectionHeader
         eyebrow="Diagnostics"
         title="Start with the problem, not the invoice."
-        description="The tools are designed to help businesses identify the real issue before choosing a system, supplier, consultant, platform, or process."
+        description="The tools help identify the real issue before choosing a system, supplier, consultant, platform, process, or specialist route."
       />
 
       <div class="grid grid--4">
@@ -51,7 +71,7 @@ const featuredNotes = notes
           title="Should this be sent by email?"
           description="For sensitive information, access details, client data, private instructions, and anything that should not become a permanent readable record."
           bestFor="Quick communication-risk checks."
-          route="Email Risk Checker, then Jambastic where appropriate."
+          route="Email Risk Checker, then Secure Information Review or Jambastic where appropriate."
           href={TALLY_EMAIL_RISK_CHECKER_URL}
           buttonLabel="Email Risk Checker"
         />
@@ -60,7 +80,7 @@ const featuredNotes = notes
           title="Confidential Communication Risk Checker"
           description="For professional firms, advisers, consultants, agencies, and high-trust environments handling sensitive exchanges."
           bestFor="Sensitive temporary exchanges."
-          route="Confidential checker, then Jambastic or review."
+          route="Confidential checker, then Secure Information Review."
           href={TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL}
           buttonLabel="Risk Checker"
         />
@@ -69,7 +89,7 @@ const featuredNotes = notes
           title="AI Theatre Detector"
           description="For proposals, platforms, consultants, internal projects, and “AI solutions” that may be more costume than substance."
           bestFor="AI claims before money is spent."
-          route="Detector, guide, or practical review."
+          route="Detector, then AI & Automation Review where appropriate."
           href={TALLY_AI_THEATRE_DETECTOR_URL}
           buttonLabel="AI Theatre Detector"
         />
@@ -78,7 +98,7 @@ const featuredNotes = notes
           title="Automation or AI?"
           description="For businesses unsure whether they need AI, automation, better data, clearer processes, a database, a form, or human review."
           bestFor="Technology decisions before procurement."
-          route="Diagnostic, review, or business engineering."
+          route="Diagnostic, then AI & Automation or Business Engineering Review."
           href={TALLY_AUTOMATION_OR_AI_URL}
           buttonLabel="Automation or AI?"
         />
@@ -89,9 +109,35 @@ const featuredNotes = notes
   <section class="page-section page-section--soft">
     <div class="container">
       <SectionHeader
+        eyebrow="Paid starting point"
+        title="The paid starting point: Sienda Practical Review"
+        description="When the diagnostic result points to a serious issue, the next step is not another guess. Sienda Practical Review turns the problem into a structured recommendation: what should be protected, analysed, automated, simplified, reviewed, built, or avoided."
+      />
+
+      <div class="review-track-grid">
+        {
+          reviewTracks.map((track) => (
+            <article class="review-track-card card">
+              <h2>{track.title}</h2>
+              <p>{track.text}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="review-actions">
+        <ExternalFormButton label="Request a Practical Review" />
+        <Button href="/request-review" variant="secondary">Explore the Review Tracks</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <SectionHeader
         eyebrow="Routes"
-        title="Where the tools lead"
-        description="The diagnostic tools are not decorative forms. They route the visitor towards the correct commercial action."
+        title="Where the review can lead"
+        description="Jambastic, QOOBIX, IDAAS, Sienda Media, bespoke work, simplification, or no build at all may be the right answer. The review helps choose."
       />
 
       <div class="route-grid">
@@ -133,7 +179,7 @@ const featuredNotes = notes
     </div>
   </section>
 
-  <section class="page-section">
+  <section class="page-section page-section--soft">
     <div class="container">
       <div class="applied-strip card">
         <div>
@@ -153,7 +199,7 @@ const featuredNotes = notes
     </div>
   </section>
 
-  <section class="page-section page-section--soft">
+  <section class="page-section">
     <div class="container">
       <SectionHeader
         eyebrow="Field Notes"
@@ -183,7 +229,7 @@ const featuredNotes = notes
     </div>
   </section>
 
-  <section class="page-section">
+  <section class="page-section page-section--soft">
     <div class="container">
       <CTASection type="review" />
     </div>
@@ -197,10 +243,43 @@ const featuredNotes = notes
     color: var(--colour-muted);
   }
 
+  .review-track-grid,
   .route-grid {
     display: grid;
     gap: var(--space-lg);
+  }
+
+  .review-track-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .route-grid {
     grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .review-track-card {
+    padding: 1.25rem;
+  }
+
+  .review-track-card h2 {
+    margin: 0;
+    color: var(--colour-dark);
+    font-size: clamp(1.12rem, 2vw, 1.35rem);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  .review-track-card p {
+    margin: 0.75rem 0 0;
+    color: var(--colour-muted);
+    font-size: 0.96rem;
+  }
+
+  .review-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
   }
 
   .applied-strip {
@@ -236,12 +315,14 @@ const featuredNotes = notes
   }
 
   @media (max-width: 1080px) {
+    .review-track-grid,
     .route-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
   @media (max-width: 820px) {
+    .review-track-grid,
     .route-grid {
       grid-template-columns: 1fr;
     }
