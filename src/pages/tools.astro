@@ -4,7 +4,10 @@ import Hero from '@components/Hero.astro';
 import SectionHeader from '@components/SectionHeader.astro';
 import ToolCard from '@components/ToolCard.astro';
 import CTASection from '@components/CTASection.astro';
+import Button from '@components/Button.astro';
+import ExternalFormButton from '@components/ExternalFormButton.astro';
 import {
+  JAMBASTIC_URL,
   TALLY_AI_THEATRE_DETECTOR_URL,
   TALLY_AUTOMATION_OR_AI_URL,
   TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL,
@@ -33,50 +36,92 @@ import {
         description="Each tool is designed to clarify the problem and route the visitor towards the correct next step."
       />
 
-      <div class="grid grid--2">
-        <ToolCard
-          title="Email Risk Checker"
-          description="A quick test for deciding whether ordinary email is appropriate for the information being shared."
-          checks="Whether the content involves sensitive, temporary, access-related, confidential, client-related, or professionally risky information."
-          bestFor="Professionals who need a fast answer before sending information through ordinary email."
-          whenToUse="Before sending passwords, access links, confidential notes, private instructions, client details, settlement figures, payroll instructions, or similar material."
-          route="Jambastic, when the information should not become a permanent readable record."
-          href={TALLY_EMAIL_RISK_CHECKER_URL}
-          buttonLabel="Email Risk Checker"
-        />
+      <div class="tool-review-grid">
+        <article class="tool-review-card card">
+          <ToolCard
+            title="Email Risk Checker"
+            description="A quick test for deciding whether ordinary email is appropriate for the information being shared."
+            checks="Whether the content involves sensitive, temporary, access-related, confidential, client-related, or professionally risky information."
+            bestFor="Professionals who need a fast answer before sending information through ordinary email."
+            whenToUse="Before sending passwords, access links, confidential notes, private instructions, client details, settlement figures, payroll instructions, or similar material."
+            route="Secure Information Review or Jambastic."
+            href={TALLY_EMAIL_RISK_CHECKER_URL}
+            buttonLabel="Email Risk Checker"
+          />
 
-        <ToolCard
-          title="Confidential Communication Risk Checker"
-          description="A broader diagnostic for professional environments where sensitive information may be mishandled during ordinary daily work."
-          checks="Whether the communication creates unnecessary exposure through email, chat, forwarding, searchable history, backups, archives, screenshots, or later discovery."
-          bestFor="Law firms, accountants, advisers, consultants, agencies, private offices, and other high-trust environments."
-          whenToUse="When the exchange involves responsibility, client trust, professional confidentiality, access data, identity details, commercial sensitivity, or operational risk."
-          route="Jambastic, or a practical review if the communication process itself needs redesigning."
-          href={TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL}
-          buttonLabel="Risk Checker"
-        />
+          <div class="next-step">
+            <h2>Next step</h2>
+            <p>If the result suggests that ordinary email is not appropriate, consider a Secure Information Review or explore Jambastic.</p>
+            <div class="next-step__actions">
+              <ExternalFormButton label="Request a Secure Information Review" />
+              <Button href={JAMBASTIC_URL} variant="secondary">Explore Jambastic</Button>
+            </div>
+          </div>
+        </article>
 
-        <ToolCard
-          title="AI Theatre Detector"
-          description="A practical test for separating useful technology from expensive nonsense wearing an artificial moustache."
-          checks="Whether an AI proposal, product, internal project, consultant pitch, webinar, or platform is vague, inflated, unmeasurable, risky, or commercially weak."
-          bestFor="Business owners, managers, consultants, and teams evaluating AI claims."
-          whenToUse="Before buying, approving, presenting, recommending, or internally celebrating an AI initiative."
-          route="Sienda Media guides, AI & Automation Field Notes, or a focused practical review."
-          href={TALLY_AI_THEATRE_DETECTOR_URL}
-          buttonLabel="AI Theatre Detector"
-        />
+        <article class="tool-review-card card">
+          <ToolCard
+            title="Confidential Communication Risk Checker"
+            description="A broader diagnostic for professional environments where sensitive information may be mishandled during ordinary daily work."
+            checks="Whether the communication creates unnecessary exposure through email, chat, forwarding, searchable history, backups, archives, screenshots, or later discovery."
+            bestFor="Law firms, accountants, advisers, consultants, agencies, private offices, and other high-trust environments."
+            whenToUse="When the exchange involves responsibility, client trust, professional confidentiality, access data, identity details, commercial sensitivity, or operational risk."
+            route="Secure Information Review."
+            href={TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL}
+            buttonLabel="Risk Checker"
+          />
 
-        <ToolCard
-          title="Automation or AI?"
-          description="A decision tool for businesses wondering whether the problem really needs AI, ordinary automation, better data, a clearer process, a database, a form, a spreadsheet, or human review."
-          checks="Whether the issue is primarily process, data, human judgement, database structure, automation, AI, or simple tooling."
-          bestFor="Teams facing confusing technology decisions."
-          whenToUse="Before building, buying, automating, connecting systems, asking for AI, or creating yet another spreadsheet with delusions of grandeur."
-          route="Business engineering, practical review, or the right product route."
-          href={TALLY_AUTOMATION_OR_AI_URL}
-          buttonLabel="Automation or AI?"
-        />
+          <div class="next-step">
+            <h2>Next step</h2>
+            <p>If the communication involves sensitive, temporary, client-related, access-related, or commercially important information, request a Secure Information Review.</p>
+            <div class="next-step__actions">
+              <ExternalFormButton label="Request a Secure Information Review" />
+            </div>
+          </div>
+        </article>
+
+        <article class="tool-review-card card">
+          <ToolCard
+            title="AI Theatre Detector"
+            description="A practical test for separating useful technology from expensive nonsense wearing an artificial moustache."
+            checks="Whether an AI proposal, product, internal project, consultant pitch, webinar, or platform is vague, inflated, unmeasurable, risky, or commercially weak."
+            bestFor="Business owners, managers, consultants, and teams evaluating AI claims."
+            whenToUse="Before buying, approving, presenting, recommending, or internally celebrating an AI initiative."
+            route="AI & Automation Review."
+            href={TALLY_AI_THEATRE_DETECTOR_URL}
+            buttonLabel="AI Theatre Detector"
+          />
+
+          <div class="next-step">
+            <h2>Next step</h2>
+            <p>If the proposal or project smells of theatre, request an AI & Automation Review before it becomes an invoice.</p>
+            <div class="next-step__actions">
+              <ExternalFormButton label="Request an AI & Automation Review" />
+            </div>
+          </div>
+        </article>
+
+        <article class="tool-review-card card">
+          <ToolCard
+            title="Automation or AI?"
+            description="A decision tool for businesses wondering whether the problem really needs AI, ordinary automation, better data, a clearer process, a database, a form, a spreadsheet, or human review."
+            checks="Whether the issue is primarily process, data, human judgement, database structure, automation, AI, or simple tooling."
+            bestFor="Teams facing confusing technology decisions."
+            whenToUse="Before building, buying, automating, connecting systems, asking for AI, or creating yet another spreadsheet with delusions of grandeur."
+            route="AI & Automation Review or Business Engineering Review."
+            href={TALLY_AUTOMATION_OR_AI_URL}
+            buttonLabel="Automation or AI?"
+          />
+
+          <div class="next-step">
+            <h2>Next step</h2>
+            <p>If the result is not obvious, request an AI & Automation Review or Business Engineering Review.</p>
+            <div class="next-step__actions">
+              <ExternalFormButton label="Request an AI & Automation Review" />
+              <ExternalFormButton label="Request a Business Engineering Review" variant="secondary" />
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -87,3 +132,53 @@ import {
     </div>
   </section>
 </Layout>
+
+<style>
+  .tool-review-grid {
+    display: grid;
+    gap: 1.35rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tool-review-card {
+    display: grid;
+    gap: 1.25rem;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .tool-review-card :global(.tool-card) {
+    border: 0;
+    box-shadow: none;
+  }
+
+  .next-step {
+    display: grid;
+    gap: 0.85rem;
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  .next-step h2 {
+    margin: 0;
+    color: var(--colour-dark);
+    font-size: 1.12rem;
+    line-height: 1.2;
+  }
+
+  .next-step p {
+    margin: 0;
+    color: var(--colour-muted);
+  }
+
+  .next-step__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 860px) {
+    .tool-review-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
