@@ -15,6 +15,7 @@ interface Props {
   built: string;
   guardrails: string;
   impact: string;
+  reviewTrack: string;
   route: RouteAction;
 }
 
@@ -25,6 +26,7 @@ const {
   built,
   guardrails,
   impact,
+  reviewTrack,
   route
 } = Astro.props;
 ---
@@ -55,6 +57,11 @@ const {
       <h3>Operational impact</h3>
       <p>{impact}</p>
     </section>
+
+    <section class="case-study-card__track">
+      <h3>Relevant review track</h3>
+      <p>{reviewTrack}</p>
+    </section>
   </div>
 
   <footer class="case-study-card__footer">
@@ -62,7 +69,7 @@ const {
       route.request ? (
         <ExternalFormButton label={route.label} />
       ) : (
-        <Button href={route.href || '/tools'} variant="secondary">
+        <Button href={route.href || '/request-review'} variant="secondary">
           {route.label}
         </Button>
       )
@@ -117,6 +124,15 @@ const {
     color: var(--colour-muted);
     font-size: 0.96rem;
     line-height: 1.55;
+  }
+
+  .case-study-card__track {
+    border-top-color: rgba(0, 153, 255, 0.28) !important;
+  }
+
+  .case-study-card__track p {
+    color: var(--colour-blue);
+    font-weight: 800;
   }
 
   .case-study-card__footer {
