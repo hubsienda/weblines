@@ -1,14 +1,9 @@
 ---
-const solutionItems = [
+const serviceItems = [
   {
     href: '/secure-exchange',
     label: 'Secure Exchange',
     description: 'Sensitive temporary information and the Jambastic route.'
-  },
-  {
-    href: '/ai-automation',
-    label: 'AI & Automation',
-    description: 'AI realism, automation, data, process, and review.'
   },
   {
     href: '/market-intelligence',
@@ -21,9 +16,19 @@ const solutionItems = [
     description: 'Managed intelligence delivered as a service by Sienda.'
   },
   {
+    href: '/ai-automation',
+    label: 'AI & Automation',
+    description: 'AI realism, automation, data, process, and review.'
+  },
+  {
     href: '/business-engineering',
     label: 'Business Engineering',
     description: 'Diagnosis before building and useful systems.'
+  },
+  {
+    href: '/guides',
+    label: 'Guides',
+    description: 'Paid guides, templates, field tools, and downloadable resources.'
   }
 ];
 
@@ -31,10 +36,10 @@ const mobileItems = [
   { href: '/tools', label: 'Tools' },
   { href: '/field-notes', label: 'Field Notes' },
   { href: '/applied-systems', label: 'Applied Systems' },
-  { href: '/secure-exchange', label: 'Secure Exchange' },
-  { href: '/ai-automation', label: 'AI & Automation' },
-  { href: '/market-intelligence', label: 'Market Intelligence' },
   { href: '/idaas', label: 'IDAAS' },
+  { href: '/secure-exchange', label: 'Secure Exchange' },
+  { href: '/market-intelligence', label: 'Market Intelligence' },
+  { href: '/ai-automation', label: 'AI & Automation' },
   { href: '/business-engineering', label: 'Business Engineering' },
   { href: '/guides', label: 'Guides' },
   { href: '/request-review', label: 'Request Review' }
@@ -51,18 +56,19 @@ const mobileItems = [
       <a href="/tools">Tools</a>
       <a href="/field-notes">Field Notes</a>
       <a href="/applied-systems">Applied Systems</a>
+      <a href="/idaas">IDAAS</a>
 
       <div class="nav-dropdown">
         <button class="nav-dropdown__trigger" type="button" aria-expanded="false">
-          Solutions
+          Services
           <span class="nav-dropdown__chevron" aria-hidden="true"></span>
         </button>
 
         <div class="nav-dropdown__panel">
-          <p class="nav-dropdown__label">Solutions</p>
+          <p class="nav-dropdown__label">Services</p>
 
           {
-            solutionItems.map((item) => (
+            serviceItems.map((item) => (
               <a class="nav-dropdown__item" href={item.href}>
                 <strong>{item.label}</strong>
                 <span>{item.description}</span>
@@ -72,7 +78,6 @@ const mobileItems = [
         </div>
       </div>
 
-      <a href="/guides">Guides</a>
       <a class="site-header__review" href="/request-review">Request Review</a>
     </nav>
 
@@ -198,8 +203,8 @@ const mobileItems = [
 
   .nav-dropdown:hover .nav-dropdown__chevron,
   .nav-dropdown:focus-within .nav-dropdown__chevron {
-    transform: rotate(225deg);
     margin-top: 0.16rem;
+    transform: rotate(225deg);
   }
 
   .nav-dropdown__panel {
@@ -208,7 +213,7 @@ const mobileItems = [
     left: 50%;
     display: grid;
     gap: 0.25rem;
-    width: 370px;
+    width: 380px;
     padding: 0.85rem;
     border: 1px solid var(--colour-line);
     border-radius: var(--radius-medium);
