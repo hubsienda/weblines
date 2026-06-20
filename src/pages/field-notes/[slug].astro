@@ -1,10 +1,20 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import CategoryPill from '@components/CategoryPill.astro';
-import CTASection from '@components/CTASection.astro';
 import ArticleCard from '@components/ArticleCard.astro';
+import Button from '@components/Button.astro';
+import ExternalFormButton from '@components/ExternalFormButton.astro';
 import { getCollection } from 'astro:content';
 import { getFieldNoteSlug } from '../../utils/fieldNotes';
+import {
+  JAMBASTIC_URL,
+  QOOBIX_URL,
+  SIENDA_MEDIA_URL,
+  TALLY_AI_THEATRE_DETECTOR_URL,
+  TALLY_AUTOMATION_OR_AI_URL,
+  TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL,
+  TALLY_EMAIL_RISK_CHECKER_URL
+} from '../../config/links';
 
 export async function getStaticPaths() {
   const notes = await getCollection('fieldNotes');
@@ -31,6 +41,65 @@ const formattedDate = new Intl.DateTimeFormat('en-GB', {
 }).format(note.data.date);
 
 const noteSlug = getFieldNoteSlug(note.id);
+const category = String(note.data.category).toLowerCase();
+
+const cta =
+  category.includes('secure')
+    ? {
+        eyebrow: 'Secure Information Review',
+        title: 'Does this risk exist in your own communication?',
+        text: 'If the issue involves sensitive, temporary, client-related, access-related, or commercially important information, start with a Secure Information Review.',
+        requestLabel: 'Request a Secure Information Review',
+        links: [
+          { href: JAMBASTIC_URL, label: 'Jambastic' },
+          { href: TALLY_EMAIL_RISK_CHECKER_URL, label: 'Email Risk Checker' },
+          { href: TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL, label: 'Risk Checker' }
+        ]
+      }
+    : category.includes('ai') || category.includes('automation')
+      ? {
+          eyebrow: 'AI & Automation Review',
+          title: 'Before the proposal becomes an invoice.',
+          text: 'If the issue involves AI claims, automation decisions, data readiness, process confusion, or human-review controls, request an AI & Automation Review.',
+          requestLabel: 'Request an AI & Automation Review',
+          links: [
+            { href: TALLY_AI_THEATRE_DETECTOR_URL, label: 'AI Theatre Detector' },
+            { href: TALLY_AUTOMATION_OR_AI_URL, label: 'Automation or AI?' },
+            { href: SIENDA_MEDIA_URL, label: 'Sienda Media' }
+          ]
+        }
+      : category.includes('market')
+        ? {
+            eyebrow: 'Market Intelligence Review',
+            title: 'Clarify the market question before choosing the route.',
+            text: 'If the issue involves market uncertainty, competitor mapping, partner routes, or candidate organisations for verification, start with a Market Intelligence Review.',
+            requestLabel: 'Request a Market Intelligence Review',
+            links: [
+              { href: '/idaas', label: 'IDAAS' },
+              { href: QOOBIX_URL, label: 'QOOBIX' }
+            ]
+          }
+        : category.includes('business')
+          ? {
+              eyebrow: 'Business Engineering Review',
+              title: 'Turn the operational problem into a practical route.',
+              text: 'If the issue involves weak processes, unclear responsibility, data confusion, software uncertainty, or expensive technology decisions, request a Business Engineering Review.',
+              requestLabel: 'Request a Business Engineering Review',
+              links: [
+                { href: '/tools', label: 'Diagnostic Tools' },
+                { href: '/applied-systems', label: 'Applied Systems' }
+              ]
+            }
+          : {
+              eyebrow: 'Practical Review',
+              title: 'Start with a practical review.',
+              text: 'If the next step is commercially important, the review helps clarify what should be protected, analysed, automated, simplified, reviewed, built, or avoided.',
+              requestLabel: 'Request a Practical Review',
+              links: [
+                { href: '/tools', label: 'Diagnostic Tools' },
+                { href: '/applied-systems', label: 'Applied Systems' }
+              ]
+            };
 ---
 
 <Layout
@@ -54,7 +123,22 @@ const noteSlug = getFieldNoteSlug(note.id);
     <div class="reading-container prose article-content">
       <Content />
 
-      <CTASection type={note.data.ctaType} />
+      <section class="field-note-cta">
+        <p class="eyebrow">{cta.eyebrow}</p>
+        <h2>{cta.title}</h2>
+        <p>{cta.text}</p>
+
+        <div class="field-note-cta__actions">
+          <ExternalFormButton label={cta.requestLabel} />
+          {
+            cta.links.map((link) => (
+              <Button href={link.href} variant="secondary">
+                {link.label}
+              </Button>
+            ))
+          }
+        </div>
+      </section>
     </div>
   </article>
 
@@ -123,6 +207,37 @@ const noteSlug = getFieldNoteSlug(note.id);
 
   .article-content {
     padding-block: 3.5rem;
+  }
+
+  .field-note-cta {
+    margin-top: 3rem;
+    padding: clamp(1.5rem, 4vw, 2.25rem);
+    border: 1px solid rgba(0, 153, 255, 0.24);
+    border-radius: var(--radius-large);
+    background:
+      radial-gradient(circle at top right, rgba(0, 153, 255, 0.12), transparent 22rem),
+      var(--colour-white);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .field-note-cta h2 {
+    margin: 0.35rem 0 0;
+    color: var(--colour-dark);
+    font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+  }
+
+  .field-note-cta p:not(.eyebrow) {
+    margin: 0.75rem 0 0;
+    color: var(--colour-muted);
+  }
+
+  .field-note-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
   }
 
   .related-title {
