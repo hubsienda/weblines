@@ -12,6 +12,7 @@ import { getCollection } from 'astro:content';
 import { getFieldNoteSlug } from '../utils/fieldNotes';
 import {
   GOOGLE_ENQUIRY_FORM_URL,
+  MARKET_ENTRY_REALITY_CHECK_URL,
   TALLY_AI_THEATRE_DETECTOR_URL,
   TALLY_AUTOMATION_OR_AI_URL,
   TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL,
@@ -102,6 +103,21 @@ const reviewTracks = [
           href={TALLY_AUTOMATION_OR_AI_URL}
           buttonLabel="Automation or AI?"
         />
+      </div>
+
+      <div class="market-entry-block card">
+        <div>
+          <p class="eyebrow">Market Entry Reality Check</p>
+          <h2>Entering a market? Start here.</h2>
+          <p>
+            Use the Market Entry Reality Check before paying for market research,
+            databases, agents, distributors, trade fairs, or outreach.
+          </p>
+        </div>
+
+        <Button href={MARKET_ENTRY_REALITY_CHECK_URL} variant="secondary">
+          Take the Reality Check
+        </Button>
       </div>
     </div>
   </section>
@@ -282,6 +298,7 @@ const reviewTracks = [
     margin-top: 1.5rem;
   }
 
+  .market-entry-block,
   .applied-strip {
     display: flex;
     align-items: center;
@@ -289,18 +306,24 @@ const reviewTracks = [
     gap: 1.5rem;
     padding: clamp(1.5rem, 4vw, 2.25rem);
     background:
-      radial-gradient(circle at top right, rgba(0, 153, 255, 0.11), transparent 24rem),
+      radial-gradient(circle at top right, rgba(0, 153, 255, 0.08), transparent 24rem),
       var(--colour-white);
   }
 
+  .market-entry-block {
+    margin-top: 1.5rem;
+  }
+
+  .market-entry-block h2,
   .applied-strip h2 {
     margin: 0.35rem 0 0;
     color: var(--colour-dark);
-    font-size: clamp(1.55rem, 3vw, 2.1rem);
+    font-size: clamp(1.45rem, 2.8vw, 1.95rem);
     line-height: 1.15;
     letter-spacing: -0.035em;
   }
 
+  .market-entry-block p:not(.eyebrow),
   .applied-strip p:not(.eyebrow) {
     max-width: 680px;
     margin: 0.8rem 0 0;
@@ -327,6 +350,7 @@ const reviewTracks = [
       grid-template-columns: 1fr;
     }
 
+    .market-entry-block,
     .applied-strip {
       display: grid;
     }
