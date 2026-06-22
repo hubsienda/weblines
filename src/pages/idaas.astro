@@ -6,7 +6,11 @@ import RouteCard from '@components/RouteCard.astro';
 import CTASection from '@components/CTASection.astro';
 import ExternalFormButton from '@components/ExternalFormButton.astro';
 import Button from '@components/Button.astro';
-import { QOOBIX_URL, SIENDA_MEDIA_URL } from '../config/links';
+import {
+  GOOGLE_ENQUIRY_FORM_URL,
+  MARKET_ENTRY_REALITY_CHECK_URL,
+  QOOBIX_URL
+} from '../config/links';
 
 const deliverables = [
   'Market analysis',
@@ -55,7 +59,7 @@ const steps = [
     eyebrow="IDAAS"
     title="Intelligence delivered as a service."
     description="IDAAS is for organisations that need structured market intelligence, competitor analysis, opportunity research, or candidate-organisation discovery without buying or operating QOOBIX directly. Sienda performs the intelligence work and delivers the results as a service."
-    primaryHref="/request-review"
+    primaryHref={GOOGLE_ENQUIRY_FORM_URL}
     primaryLabel="Request IDAAS Information"
     secondaryHref={QOOBIX_URL}
     secondaryLabel="Explore QOOBIX"
@@ -65,7 +69,7 @@ const steps = [
     <div class="container">
       <SectionHeader
         title="QOOBIX and IDAAS are not the same thing"
-        description="They are related routes, but they are not interchangeable."
+        description="QOOBIX is the intelligence environment. IDAAS is the managed intelligence service delivered by Sienda."
       />
 
       <div class="comparison-grid">
@@ -89,6 +93,23 @@ const steps = [
           </p>
           <ExternalFormButton label="Request IDAAS Information" />
         </article>
+      </div>
+
+      <div class="reality-check-card card">
+        <div>
+          <p class="eyebrow">Free Diagnostic</p>
+          <h2>Market Entry Reality Check</h2>
+          <p>
+            Before requesting an IDAAS project, test whether your market question is clear
+            enough to investigate. This free diagnostic helps identify whether you need
+            market analysis, competitor mapping, candidate organisations for verification,
+            partner/distributor research, or a clearer commercial question first.
+          </p>
+        </div>
+
+        <Button href={MARKET_ENTRY_REALITY_CHECK_URL} variant="secondary">
+          Take the Reality Check
+        </Button>
       </div>
     </div>
   </section>
@@ -269,7 +290,8 @@ const steps = [
   .deliverable-card,
   .not-card,
   .step-card,
-  .review-strip {
+  .review-strip,
+  .reality-check-card {
     padding: 1.25rem;
   }
 
@@ -292,7 +314,8 @@ const steps = [
   .deliverable-card h2,
   .not-card h2,
   .step-card h2,
-  .review-strip h2 {
+  .review-strip h2,
+  .reality-check-card h2 {
     margin: 0;
     color: var(--colour-dark);
     font-size: clamp(1.12rem, 2vw, 1.35rem);
@@ -302,9 +325,28 @@ const steps = [
 
   .comparison-card p:not(.comparison-card__label),
   .step-card p,
-  .review-strip p:not(.eyebrow) {
+  .review-strip p:not(.eyebrow),
+  .reality-check-card p:not(.eyebrow) {
     margin: 0;
     color: var(--colour-muted);
+  }
+
+  .reality-check-card,
+  .review-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    background:
+      radial-gradient(circle at top right, rgba(0, 153, 255, 0.08), transparent 24rem),
+      var(--colour-white);
+  }
+
+  .reality-check-card p:not(.eyebrow),
+  .review-strip p:not(.eyebrow) {
+    max-width: 760px;
+    margin-top: 0.75rem;
   }
 
   .deliverable-card {
@@ -344,22 +386,7 @@ const steps = [
     border-radius: var(--radius-button);
     background: var(--colour-blue);
     color: var(--colour-white);
-    font-weight: 900;
-  }
-
-  .review-strip {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    background:
-      radial-gradient(circle at top right, rgba(0, 153, 255, 0.1), transparent 24rem),
-      var(--colour-white);
-  }
-
-  .review-strip p:not(.eyebrow) {
-    max-width: 760px;
-    margin-top: 0.75rem;
+    font-weight: 700;
   }
 
   .review-strip__actions {
@@ -373,7 +400,7 @@ const steps = [
     max-width: 760px;
     margin: 1.5rem 0 0;
     color: var(--colour-muted);
-    font-weight: 700;
+    font-weight: 500;
   }
 
   @media (max-width: 980px) {
@@ -384,7 +411,8 @@ const steps = [
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .review-strip {
+    .review-strip,
+    .reality-check-card {
       display: grid;
     }
   }
