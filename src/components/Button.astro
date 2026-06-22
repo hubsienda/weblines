@@ -27,17 +27,20 @@ const {
     align-items: center;
     justify-content: center;
     gap: 0.45rem;
-    min-height: 44px;
-    padding: 0.7rem 1rem;
+    min-height: 42px;
+    padding: 0.68rem 0.95rem;
     border-radius: var(--radius-button);
-    font-weight: 800;
+    font-weight: 500;
+    font-size: 0.95rem;
     line-height: 1;
     text-decoration: none;
+    letter-spacing: 0;
     transition:
-      transform 160ms ease,
-      border-color 160ms ease,
-      background-color 160ms ease,
-      color 160ms ease;
+      transform 140ms ease,
+      border-color 140ms ease,
+      background-color 140ms ease,
+      color 140ms ease,
+      box-shadow 140ms ease;
   }
 
   .button:hover {
@@ -48,23 +51,27 @@ const {
     border: 1px solid var(--colour-blue);
     background: var(--colour-blue);
     color: var(--colour-white);
+    box-shadow: 0 8px 20px rgba(0, 153, 255, 0.14);
   }
 
   .button--primary:hover {
     color: var(--colour-white);
-    background: #0088e6;
-    border-color: #0088e6;
+    background: #008fe8;
+    border-color: #008fe8;
+    box-shadow: 0 10px 24px rgba(0, 153, 255, 0.18);
   }
 
   .button--secondary {
     border: 1px solid var(--colour-line);
     background: var(--colour-white);
     color: var(--colour-dark);
+    box-shadow: none;
   }
 
   .button--secondary:hover {
-    border-color: var(--colour-blue);
+    border-color: rgba(0, 153, 255, 0.55);
     color: var(--colour-blue);
+    background: var(--colour-white);
   }
 
   .button--ghost {
@@ -74,6 +81,7 @@ const {
     border-radius: 0;
     color: var(--colour-blue);
     background: transparent;
+    box-shadow: none;
   }
 
   .button--ghost:hover {
