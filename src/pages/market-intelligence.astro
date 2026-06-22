@@ -6,12 +6,15 @@ import RouteCard from '@components/RouteCard.astro';
 import CTASection from '@components/CTASection.astro';
 import Button from '@components/Button.astro';
 import ExternalFormButton from '@components/ExternalFormButton.astro';
-import { QOOBIX_URL } from '../config/links';
+import {
+  MARKET_ENTRY_REALITY_CHECK_URL,
+  QOOBIX_URL
+} from '../config/links';
 ---
 
 <Layout
   title="Market Intelligence"
-  description="Market intelligence from Sienda Weblines supports QOOBIX, IDAAS, and Market Intelligence Review: structured analysis, opportunity detection, and candidate organisations for verification."
+  description="Market intelligence from Sienda Weblines supports QOOBIX, IDAAS, Market Intelligence Review, and the Market Entry Reality Check."
 >
   <Hero
     eyebrow="Market Intelligence"
@@ -19,8 +22,8 @@ import { QOOBIX_URL } from '../config/links';
     description="A list can be useful. It is not strategy. It is not verification. It is not analysis. Market intelligence must clarify where opportunity may exist and what deserves human verification."
     primaryHref="/request-review"
     primaryLabel="Request a Market Intelligence Review"
-    secondaryHref="/idaas"
-    secondaryLabel="Explore IDAAS"
+    secondaryHref={MARKET_ENTRY_REALITY_CHECK_URL}
+    secondaryLabel="Take the Reality Check"
   />
 
   <section class="page-section">
@@ -48,6 +51,21 @@ import { QOOBIX_URL } from '../config/links';
           <h2>For organisations that need to clarify the market question before choosing the route.</h2>
           <ExternalFormButton label="Request a Market Intelligence Review" />
         </article>
+      </div>
+
+      <div class="reality-check-strip card">
+        <div>
+          <p class="eyebrow">Free Diagnostic</p>
+          <h2>Not sure whether the market question is ready?</h2>
+          <p>
+            Use the Market Entry Reality Check before paying for research,
+            outreach, distributors, databases, or trade activity.
+          </p>
+        </div>
+
+        <Button href={MARKET_ENTRY_REALITY_CHECK_URL} variant="secondary">
+          Take the Market Entry Reality Check
+        </Button>
       </div>
     </div>
   </section>
@@ -132,7 +150,8 @@ import { QOOBIX_URL } from '../config/links';
   }
 
   .market-route,
-  .request-strip {
+  .request-strip,
+  .reality-check-strip {
     padding: clamp(1.25rem, 3vw, 1.75rem);
   }
 
@@ -152,7 +171,8 @@ import { QOOBIX_URL } from '../config/links';
   }
 
   .market-route h2,
-  .request-strip h2 {
+  .request-strip h2,
+  .reality-check-strip h2 {
     margin: 0;
     color: var(--colour-dark);
     font-size: clamp(1.25rem, 2.2vw, 1.65rem);
@@ -160,7 +180,8 @@ import { QOOBIX_URL } from '../config/links';
     letter-spacing: -0.035em;
   }
 
-  .request-strip {
+  .request-strip,
+  .reality-check-strip {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -168,7 +189,14 @@ import { QOOBIX_URL } from '../config/links';
     margin-top: 2rem;
   }
 
-  .request-strip p {
+  .reality-check-strip {
+    background:
+      radial-gradient(circle at top right, rgba(0, 153, 255, 0.08), transparent 24rem),
+      var(--colour-white);
+  }
+
+  .request-strip p,
+  .reality-check-strip p:not(.eyebrow) {
     max-width: 680px;
     margin: 0.75rem 0 0;
     color: var(--colour-muted);
@@ -179,7 +207,8 @@ import { QOOBIX_URL } from '../config/links';
       grid-template-columns: 1fr;
     }
 
-    .request-strip {
+    .request-strip,
+    .reality-check-strip {
       display: grid;
     }
   }
