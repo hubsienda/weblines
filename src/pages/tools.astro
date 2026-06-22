@@ -8,6 +8,7 @@ import Button from '@components/Button.astro';
 import ExternalFormButton from '@components/ExternalFormButton.astro';
 import {
   JAMBASTIC_URL,
+  MARKET_ENTRY_REALITY_CHECK_URL,
   TALLY_AI_THEATRE_DETECTOR_URL,
   TALLY_AUTOMATION_OR_AI_URL,
   TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL,
@@ -17,12 +18,12 @@ import {
 
 <Layout
   title="Tools"
-  description="Diagnostic tools from Sienda Weblines for secure exchange, confidential communication risk, AI theatre, automation, data, process, and business engineering decisions."
+  description="Diagnostic tools from Sienda Weblines for secure exchange, confidential communication risk, market entry, AI theatre, automation, data, process, and business engineering decisions."
 >
   <Hero
     eyebrow="Tools"
     title="Diagnostic tools before commercial decisions."
-    description="Use these tools to test the nature of the problem before choosing the wrong platform, supplier, process, consultant, or technical fashion accessory."
+    description="Use these tools to test the nature of the problem before choosing the wrong platform, supplier, process, consultant, market route, or technical fashion accessory."
     primaryHref="/request-review"
     primaryLabel="Practical Review"
     secondaryHref="/field-notes"
@@ -119,6 +120,28 @@ import {
             <div class="next-step__actions">
               <ExternalFormButton label="Request an AI & Automation Review" />
               <ExternalFormButton label="Request a Business Engineering Review" variant="secondary" />
+            </div>
+          </div>
+        </article>
+
+        <article class="tool-review-card card">
+          <ToolCard
+            title="Market Entry Reality Check"
+            description="A free diagnostic for companies considering a new market, distributor search, competitor mapping, or candidate-organisation discovery before spending money on the wrong route."
+            checks="Whether your market-entry question, target country, customer type, competitor field, and candidate-organisation need are clear enough for useful intelligence work."
+            bestFor="Companies considering IDAAS, market entry, distributor search, competitor mapping, or candidate organisations for verification."
+            whenToUse="Before paying for market research, databases, agents, distributors, trade fairs, outreach, or market-entry activity."
+            route="IDAAS / Market Intelligence Review."
+            href={MARKET_ENTRY_REALITY_CHECK_URL}
+            buttonLabel="Use the Market Entry Reality Check"
+          />
+
+          <div class="next-step">
+            <h2>Next step</h2>
+            <p>If the market question is still unclear, request a Market Intelligence Review or explore IDAAS.</p>
+            <div class="next-step__actions">
+              <ExternalFormButton label="Request a Market Intelligence Review" />
+              <Button href="/idaas" variant="secondary">Explore IDAAS</Button>
             </div>
           </div>
         </article>
