@@ -36,7 +36,11 @@ const year = new Date().getFullYear();
     <nav class="site-footer__links" aria-label="Footer navigation">
       {
         footerLinks.map((link) => (
-          <a href={link.href}>
+          <a
+            href={link.href}
+            target={link.href.startsWith('http') ? '_blank' : undefined}
+            rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+          >
             {link.label}
           </a>
         ))
@@ -44,7 +48,13 @@ const year = new Date().getFullYear();
     </nav>
 
     <div class="site-footer__bottom">
-      <p>© {year} Sienda Ltd. All rights reserved | Company No. 08194971 • Registered in England & Wales</p>
+      <p>
+        © {year}
+        {' '}
+        <a href={SIENDA_URL} target="_blank" rel="noopener noreferrer">Sienda Ltd</a>.
+        {' '}
+        All rights reserved | Company No. 08194971 • Registered in England & Wales
+      </p>
       <p>Diagnosis before expensive decisions.</p>
     </div>
   </div>
@@ -53,7 +63,7 @@ const year = new Date().getFullYear();
 <style>
   .site-footer {
     border-top: 1px solid var(--colour-line);
-    background: var(--colour-dark);
+    background: #333333;
     color: var(--colour-white);
   }
 
@@ -75,7 +85,7 @@ const year = new Date().getFullYear();
 
   .site-footer__brand p {
     margin: 0;
-    color: rgba(255, 255, 255, 0.76);
+    color: rgba(255, 255, 255, 0.74);
   }
 
   .site-footer__links {
@@ -85,15 +95,21 @@ const year = new Date().getFullYear();
     padding-block: 2.2rem;
   }
 
-  .site-footer__links a {
-    color: rgba(255, 255, 255, 0.82);
-    font-size: 0.94rem;
-    font-weight: 700;
+  .site-footer__links a,
+  .site-footer__bottom a {
+    color: rgba(255, 255, 255, 0.84);
     text-decoration: none;
+    transition: color 140ms ease;
   }
 
-  .site-footer__links a:hover {
-    color: var(--colour-white);
+  .site-footer__links a {
+    font-size: 0.94rem;
+    font-weight: 500;
+  }
+
+  .site-footer__links a:hover,
+  .site-footer__bottom a:hover {
+    color: var(--colour-blue);
   }
 
   .site-footer__bottom {
@@ -101,7 +117,7 @@ const year = new Date().getFullYear();
     justify-content: space-between;
     gap: 1rem;
     padding-top: 1.25rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
     color: rgba(255, 255, 255, 0.62);
     font-size: 0.9rem;
   }
