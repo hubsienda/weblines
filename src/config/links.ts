@@ -12,3 +12,4 @@ export const TALLY_EMAIL_RISK_CHECKER_URL = 'https://tally.so/r/lb4dy5';
 export const TALLY_CONFIDENTIAL_COMMUNICATION_RISK_CHECKER_URL = 'https://tally.so/r/RGr8DK';
 export const TALLY_AI_THEATRE_DETECTOR_URL = 'https://tally.so/r/aQlYlb';
 export const TALLY_AUTOMATION_OR_AI_URL = 'https://tally.so/r/ZjQvZy';
+export const MARKET_ENTRY_REALITY_CHECK_URL = 'https://tally.so/r/D4bJQb';
